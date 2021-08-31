@@ -1,0 +1,119 @@
+body {
+    margin: 0px;
+    background-color: rgb(255, 255, 255);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#home-page {
+    background-color: rgb(255, 255, 255);
+    /* display: none; */
+    /* height: 100vh; */
+}
+header {
+    font-size: 8em;
+    text-align: center;
+    margin-top: 32vh;
+    margin-bottom: 0vh;
+    transition: 200ms ease;
+}
+header:hover {
+    color:rgb(111, 209, 144, 0.5)
+}
+#about-me {
+    /* display: none; */
+    flex-direction: column;
+    /* position: relative; */
+    /* background-color:rgb(111, 209, 144); */
+    /* overflow: hidden; */
+    /* height: 100vh; */
+}
+
+navbar {
+    overflow: hidden;
+    display: block;
+}
+
+#nav-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+} 
+
+div.nav-content {
+    margin: 10px 0px 0px 0px;
+    /* height: 5vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.3em;
+}
+
+a.nav-link {
+    color:rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    transition: 200ms ease;
+}
+
+a.nav-link:hover {
+    color:rgba(0, 0, 0, 0.7);
+}
+
+#about {
+    color:rgb(0, 0, 0);
+    text-align: left;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2em;
+    margin-right: 20vw;
+    margin-left: 20vw;
+    margin-bottom: 6vh;
+}
+#socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: space-around;
+}
+#socials > a {
+    padding: 20px;
+    color:rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    transition: 200ms ease;
+}
+
+#socials > a:hover {
+    color:rgba(0, 0, 0, 0.7);
+}
+#content {
+    animation: fade-in 1s linear 0s;
+}
+
+#funfactcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2em;
+}
+
+#funFactButton {
+    background-color: black;
+    color: white;
+    border-width: 0px;
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin: 0px 0px 20px 0px;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2em;
+    transition: 200ms ease;
+}
+
+#funFactButton:hover{
+    background-color:rgb(111, 209, 144, 0.5);
+    color: black;
+    cursor: pointer;
+}
+
+@keyframes fade-in {
+    0% {opacity: 0%;}
+    100% {opacity: 100%;}
+}
