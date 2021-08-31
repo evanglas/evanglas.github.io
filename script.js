@@ -9,7 +9,12 @@ funFacts = ["I'm from New Jersey.",
 "I'm currently researching neurosurgical robotics at the Duke Brain Tool Lab.",
 "I'm a Philly sports fan, except for basketball, where I'm a Lebron fan.",
 "Statistically speaking, I probably did not get enough sleep last night.",
-"My favority cultivar of apple is Braeburn.",
+"My favorite cultivar of apple is Braeburn.",
+"My favorite composer is Dubussy",
+"I have tragically flat feet",
+"I eat creatine on the daily, most of the time",
+"I can juggle",
+"I once grew carolina reaper peppers at my house; they're spicy"
 ];
 
 factFun = document.getElementById("funfact");
