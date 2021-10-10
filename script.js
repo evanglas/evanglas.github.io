@@ -12,9 +12,9 @@ funFacts = ["I'm from New Jersey.",
 "My favorite cultivar of apple is Braeburn.",
 "My favorite composer is Dubussy",
 "I have tragically flat feet",
-"I eat creatine on the daily, most of the time",
+"I eat creatine on the daily",
 "I can juggle",
-"I once grew carolina reaper peppers at my house; they're spicy",
+"I once grew carolina reaper peppers at my house",
 "Shout out Henry"
 ];
 
