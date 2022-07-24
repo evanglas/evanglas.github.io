@@ -36,7 +36,7 @@ var myGameArea = {
         var canvasDiv = document.getElementById("canvasDiv");
         canvasDiv.appendChild(this.canvas);
         
-        title = new text("Swerve Pong v1 ©", canvasWidth / 2, canvasHeight / 2 - 100, "center", "white", "50px Courier");
+        title = new text("Swerve Pong v1", canvasWidth / 2, canvasHeight / 2 - 100, "center", "white", "50px Courier");
         description = new text("Use asdw keys for p1, arrow keys if p2. First to 11 wins.", canvasWidth / 2, canvasHeight / 2 - 50, "center", "white", "20px Courier");
         oneBox = new rectangle(100, 50, "white", canvasWidth / 2 - 140, canvasHeight / 2, "paddle");
         twoBox = new rectangle(100, 50, "white", canvasWidth / 2 + 40, canvasHeight / 2, "paddle");
