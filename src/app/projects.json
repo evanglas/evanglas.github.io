@@ -1,0 +1,36 @@
+{
+    "eceRISC": {
+        "id": "eceRISC",
+        "imagePath": "/projectImages/ece651game.png"
+
+    },
+    "geo": {
+        "id": "geo",
+        "imagePath": "/projectImages/GeoGuessrClonePicture.png"
+    },
+    "clustering": {
+        "id": "clustering",
+        "imagePath": "/projectImages/Clustering.png"
+    },
+    "employee": {
+        "id": "employee",
+        "imagePath": "/projectImages/RFMGraph.png"
+    },
+    "housing": {
+        "id": "housing",
+        "imagePath": "/projectImages/Housing Correlations.png"
+
+    },
+    "eog": {
+        "id": "eog",
+        "imagePath": "/projectImages/EOG Breadboarded Circuit.png"
+    },
+    "digit": {
+        "id": "digit",
+        "imagePath": "/projectImages/PCA.png"
+    },
+    "swervePong": {
+        "id": "swervePong",
+        "imagePath": "/projectImages/pongPic.png"
+    }
+}
