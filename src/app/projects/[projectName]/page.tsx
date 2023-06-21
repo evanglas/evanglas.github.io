@@ -4,6 +4,7 @@ import path from 'path';
 import fs from 'fs';
 
 import projectData from '../../projects.json' assert {type: 'json'};
+import Link from 'next/link';
 
 interface ProjectPageProps {
     params: {
@@ -59,6 +60,7 @@ export default function ProjectPage({params}: ProjectPageProps) {
             {/* <div>This is a page {projectName}</div> */}
             <p>{readFile('public/projectDescriptions/' + params.projectName + '.txt')}</p>
             <Image src={path} alt="picture" width={500} height={500}></Image>
+            <Link href="https://evanglas.com/pong.html">Pong</Link>
         </div>
     )
 }
