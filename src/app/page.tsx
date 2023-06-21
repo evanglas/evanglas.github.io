@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import profile_picture from './profile_picture - Copy.jpg';
+import profile_picture from 'public/profile_picture.jpg';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faEnvelope, faFile, fas } from '@fortawesome/free-solid-svg-icons'

@@ -31,7 +31,8 @@ function readFile(filePath : string): string {
 
 export async function generateStaticParams() {
     return [{projectName:'eceRISC'}, {projectName:'geo'},
-{projectName:'clustering'}, {projectName:'employee'}];
+{projectName:'clustering'}, {projectName:'employee'}, {projectName:'cs671'},
+{projectName:'swervePong'}, {projectName:'eog'}, {projectName:'housing'}];
 }
 
 
@@ -48,7 +49,7 @@ export default function ProjectPage({params}: ProjectPageProps) {
 
     // console.log(p1);
 
-    console.log(params.projectName);
+    // console.log(params.projectName);
     // const projectInfo = projectData[params.projectName];
     const projects: ProjectData = projectData;
     const path = projects[params.projectName].imagePath;

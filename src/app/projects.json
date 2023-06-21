@@ -27,10 +27,14 @@
     },
     "digit": {
         "id": "digit",
-        "imagePath": "/projectImages/PCA.png"
+        "imagePath": "/projectImages/digitScatterPlots.png"
     },
     "swervePong": {
         "id": "swervePong",
         "imagePath": "/projectImages/pongPic.png"
+    },
+    "cs671": {
+        "id": "cs671",
+        "imagePath": "/projectImages/PCA.png"
     }
 }
