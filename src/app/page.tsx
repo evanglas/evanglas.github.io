@@ -60,7 +60,7 @@ export default function Home() {
         <div id="project_cards" className="flex flex-row flex-wrap justify-around max-w-5xl">
           {
             Object.entries(projects).map(([id, project]) => (
-              <div className="m-5 rounded-2xl"><ProjectCard id={id} imgPath={project.imagePath}/></div>
+              <div key={id} className="m-5 rounded-2xl"><ProjectCard id={id} imgPath={project.imagePath}/></div>
             ))
           }
         </div>
