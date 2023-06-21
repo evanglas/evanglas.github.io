@@ -18,12 +18,12 @@
     },
     "housing": {
         "id": "housing",
-        "imagePath": "/projectImages/Housing Correlations.png"
+        "imagePath": "/projectImages/HousingCorrelations.png"
 
     },
     "eog": {
         "id": "eog",
-        "imagePath": "/projectImages/EOG Breadboarded Circuit.png"
+        "imagePath": "/projectImages/EOGBreadboardedCircuit.png"
     },
     "digit": {
         "id": "digit",
