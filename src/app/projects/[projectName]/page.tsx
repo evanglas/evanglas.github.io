@@ -1,96 +1,98 @@
-import Image from 'next/image'
-// import { usePathname } from 'next/navigation';
-import path from 'path';
-import fs from 'fs';
+import Image from "next/image";
+import fs from "fs";
 
-import projectData from '../../projects.json' assert {type: 'json'};
-import Link from 'next/link';
+import projectData from "../../projects.json" assert { type: "json" };
+import Link from "next/link";
 
 interface ProjectPageProps {
-    params: {
-        projectName: string;
-    };
+  params: {
+    projectName: string;
+  };
 }
 
 interface ProjectData {
-    [key: string]: {
-      id: string;
-      imagePath: string;
-    };
-  }
+  [key: string]: {
+    // id: string;
+    name: string;
+    imagePath: string;
+    tools: string[];
+  };
+}
 
-function readFile(filePath : string): string {
-    try {
-        const text = fs.readFileSync(filePath, 'utf-8');
-        return text;
-    } catch (error) {
-        console.error(`${error}`);
-        return '';
-    }
+const projects: ProjectData = projectData;
+
+function readFile(filePath: string): string {
+  try {
+    const text = fs.readFileSync(filePath, "utf-8");
+    return text;
+  } catch (error) {
+    console.error(`${error}`);
+    return "";
+  }
+}
+
+interface ProjectName {
+  projectName: string;
 }
 
 export async function generateStaticParams() {
-    return [{projectName:'eceRISC'}, {projectName:'geo'},
-{projectName:'clustering'}, {projectName:'employee'}, {projectName:'cs671'},
-{projectName:'swervePong'}, {projectName:'eog'}, {projectName:'housing'}];
+  const namesDict: ProjectName[] = Object.keys(projects).map((p, i) => ({
+    projectName: p,
+  }));
+  return namesDict;
 }
 
+export default function ProjectPage({ params }: ProjectPageProps) {
+  const id = params.projectName;
+  const path = projects[params.projectName].imagePath;
 
-
-export default function ProjectPage({params}: ProjectPageProps) {
-    // const path1 = usePathname();
-    // const lI = path1.lastIndexOf('/');
-    // const projectName = path1.substring(lI + 1);
-
-    // console.log(project);
-    // console.log(project);
-
-    // const p1 = projectData.find((project) => project.id === 'eceRISC');
-
-    // console.log(p1);
-
-    // console.log(params.projectName);
-    // const projectInfo = projectData[params.projectName];
-    const projects: ProjectData = projectData;
-    const path = projects[params.projectName].imagePath;
-
-    return (
-        <div>
-            Page
-            <p>Test paragraph</p>
-            {/* <div>This is a page {projectName}</div> */}
-            <p>{readFile('public/projectDescriptions/' + params.projectName + '.txt')}</p>
-            <Image src={path} alt="picture" width={500} height={500}></Image>
-            <Link href="https://evanglas.com/pong.html">Pong</Link>
+  return (
+    <body>
+      <title>{projects[id].name}</title>
+      <div id="title" className="flex flex-row justify-center p-10">
+        <h1 className="text-5xl">{projects[id].name}</h1>
+      </div>
+      <div id="content-wrapper" className="flex flex-row justify-center">
+        <div
+          id="content"
+          className="flex flex-row justify-center flex-wrap max-w-[1200px]"
+        >
+          <div
+            id="picture"
+            className="rounded-2xl overflow-hidden flex flex-row justify-center relative xl:w-[500px] xl:h-[500px] w-[400px] max-w-[500px] h-[400px] mx-5"
+          >
+            <Image
+              src={path}
+              alt="Picture"
+              fill={true}
+              style={{ objectFit: "cover" }}
+              //   className="w-full"
+            ></Image>
+          </div>
+          <div id="information" className="max-w-[500px] flex flex-col mx-5">
+            <h2 className="text-center text-3xl pb-4">Description</h2>
+            <p className="px-2">
+              {readFile(
+                "public/projectDescriptions/" + params.projectName + ".txt"
+              )}
+            </p>
+            <h2 className="text-center text-3xl py-2">Tools Used</h2>
+            <ul className="px-2">
+              {projects[id].tools.map((tool) => (
+                <li key={tool}>{tool}</li>
+              ))}
+            </ul>
+            <h2 className="text-center text-3xl py-2">Additional Links</h2>
+          </div>
         </div>
-    )
+      </div>
+      <div id="back" className="flex flex-row justify-center">
+        <Link href="/#projects">
+          <span className="text-8xl transition hover:opacity-50 hover:cursor-pointer">
+            &larr;
+          </span>
+        </Link>
+      </div>
+    </body>
+  );
 }
-
-// export async function getStaticPaths() {
-//     const paths = projectData.map((project) => ({
-//         params: {projectName: project.id}
-//     }))
-
-//     console.log("Pa:");
-//     console.log(paths);
-//     return {
-//         paths,
-//         fallback: true,
-//     };
-//   }
-  
-// export async function getStaticProps({params}) {
-//     // console.log("These are the params:");
-//     // console.log(params);
-//     // Fetch necessary data for the blog post using params.id
-//     const { projectName } = params;
-//     const project = await projectData.find((project) => project.id === 'eceRISC');
-
-//     // console.log(params);
-//     return {
-//         props: {
-//             project,
-//             "hi":"hey"
-//         },
-//     };
-//   }

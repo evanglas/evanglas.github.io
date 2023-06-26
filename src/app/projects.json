@@ -1,40 +1,72 @@
 {
-    "eceRISC": {
-        "id": "eceRISC",
-        "imagePath": "/projectImages/ece651game.png"
-
-    },
-    "geo": {
-        "id": "geo",
-        "imagePath": "/projectImages/GeoGuessrClonePicture.png"
-    },
-    "clustering": {
-        "id": "clustering",
-        "imagePath": "/projectImages/Clustering.png"
-    },
-    "employee": {
-        "id": "employee",
-        "imagePath": "/projectImages/RFMGraph.png"
-    },
-    "housing": {
-        "id": "housing",
-        "imagePath": "/projectImages/HousingCorrelations.png"
-
-    },
-    "eog": {
-        "id": "eog",
-        "imagePath": "/projectImages/EOGBreadboardedCircuit.png"
-    },
-    "digit": {
-        "id": "digit",
-        "imagePath": "/projectImages/digitScatterPlots.png"
-    },
-    "swervePong": {
-        "id": "swervePong",
-        "imagePath": "/projectImages/pongPic.png"
-    },
-    "cs671": {
-        "id": "cs671",
-        "imagePath": "/projectImages/PCA.png"
-    }
+  "eceRISC": {
+    "name": "ECE 651 Class Project: RISC",
+    "imagePath": "/projectImages/ece651game.png",
+    "tools": ["Java", "JavaFX", "Scene Builder"]
+  },
+  "geo": {
+    "name": "AI GeoGuessr Clone",
+    "imagePath": "/projectImages/GeoGuessrClonePicture.png",
+    "tools": ["React", "Tailwind CSS", "Google Maps API"]
+  },
+  "clustering": {
+    "name": "Interactive Clustering Simulator",
+    "imagePath": "/projectImages/Clustering.png",
+    "tools": ["HTML", "CSS", "JavaScript", "paper.js"]
+  },
+  "customer2": {
+    "name": "Customer Analysis",
+    "imagePath": "/projectImages/RFMGraph.png",
+    "tools": ["Python", "Pandas", "scikit-learn", "Matplotlib"]
+  },
+  "housing": {
+    "name": "Housing Price Prediction Model",
+    "imagePath": "/projectImages/HousingCorrelations.png",
+    "tools": ["Python", "Pandas", "Matplotlib", "XGBoost"]
+  },
+  "eog": {
+    "name": "Electrooculography Independent Study",
+    "imagePath": "/projectImages/EOGBreadboardedCircuit.png",
+    "tools": ["Altium", "MATLAB", "Breadboarding"]
+  },
+  "digit": {
+    "name": "ECE 280 Spoken Digit Classification",
+    "imagePath": "/projectImages/digitScatterPlots.png",
+    "tools": ["Python", "Pandas", "Matplotlib", "scikit-learn"]
+  },
+  "swervePong": {
+    "name": "SwervePong Game",
+    "imagePath": "/projectImages/pongPic.png",
+    "tools": ["HTML", "CSS", "JavaScript", "HTML Canvas"]
+  },
+  "cs671": {
+    "name": "CS 671 Kaggle Competition",
+    "imagePath": "/projectImages/PCA.png",
+    "tools": ["Python", "Pandas", "Matplotlib", "XGBoost", "scikit-learn"]
+  },
+  "diig": {
+    "name": "DIIG Example Deliverable",
+    "imagePath": "/projectImages/diig.PNG",
+    "tools": ["Python", "Pandas", "Matplotlib"]
+  },
+  "customer1": {
+    "name": "Customer Analysis",
+    "imagePath": "/projectImages/customer.PNG",
+    "tools": ["Python", "Pandas", "Matplotlib"]
+  },
+  "msong": {
+    "name": "ECE 280 MATLAB Song",
+    "imagePath": "/projectImages/msong.PNG",
+    "tools": ["MATLAB"]
+  },
+  "dmos": {
+    "name": "ECE 651 Class Project: RISC",
+    "imagePath": "/projectImages/Pendulum.PNG",
+    "tools": ["Desmos Graphic Calculator"]
+  },
+  "egr1": {
+    "name": "EGR 101 Solar Panel Soiling Sensor Project",
+    "imagePath": "/projectImages/egr1.jpg",
+    "tools": ["Adobe Illustrator"]
+  }
 }
