@@ -3,6 +3,7 @@ import fs from "fs";
 
 import projectData from "../../projects.json" assert { type: "json" };
 import Link from "next/link";
+import TechChip from "../../TechChip";
 
 interface ProjectPageProps {
   params: {
@@ -77,11 +78,11 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               )}
             </p>
             <h2 className="text-center text-3xl py-2">Tools Used</h2>
-            <ul className="px-2">
-              {projects[id].tools.map((tool) => (
-                <li key={tool}>{tool}</li>
+            <div id="tools" className="flex flex-row flex-wrap justify-around">
+              {projects[id].tools.map((tool: string) => (
+                <TechChip key={tool} name={tool} />
               ))}
-            </ul>
+            </div>
             <h2 className="text-center text-3xl py-2">Additional Links</h2>
           </div>
         </div>
