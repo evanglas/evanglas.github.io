@@ -37,12 +37,11 @@ const projectsDict: ProjectData = projectData;
 
 export default function Home() {
   return (
-    <body>
-      <link rel="icon" href="/public/favicon.ico"></link>
-      <div id="index_wrapper" className="flex flex-row justify-center">
+    <div>
+      <div id="index_wrapper" className="flex flex-row w-screen justify-center">
         <div
           id="main_content"
-          className="flex flex-col px-10 max-w-3xl h-[80vh] items-center justify-center"
+          className="flex flex-col mt-5 md:mt-0 max-w-3xl h-fit md:h-[80vh] items-center justify-center"
         >
           <div
             id="picture_name_links"
@@ -101,7 +100,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div id="about_text" className="text-left w-full md:pt-4">
+          <div id="about_text" className="px-4 text-left w-full md:pt-4">
             <hr className="border-2 border-black w-full my-1" />
             Hi! I’m a recent Electrical & Computer Engineering + CS graduate and
             incoming MS in Electrical & Computer Engineering Student at Duke
@@ -113,7 +112,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div id="down_arrow" className="flex flex-row justify-center h-[20vh]">
+      <div
+        id="down_arrow"
+        className="flex flex-row justify-center my-3 h-fit md:h-[20vh]"
+      >
         <ScrollLink to="projects" smooth={true} duration={500}>
           <motion.span
             className="text-8xl block hover:cursor-pointer hover:opacity-50"
@@ -128,7 +130,7 @@ export default function Home() {
           </motion.span>
         </ScrollLink>
       </div>
-      <div id="projects" className="flex flex-col items-center mt-10">
+      <div id="projects" className="flex flex-col items-center">
         <div id="projects_title" className="text-center w-full mb-5 text-5xl">
           Projects
         </div>
@@ -143,6 +145,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-    </body>
+    </div>
   );
 }
