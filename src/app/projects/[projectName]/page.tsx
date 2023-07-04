@@ -5,6 +5,8 @@ import projectData from "../../projects.json" assert { type: "json" };
 import Link from "next/link";
 import TechChip from "../../TechChip";
 
+import { Project } from "../../Project";
+
 interface ProjectPageProps {
   params: {
     projectName: string;
@@ -12,12 +14,7 @@ interface ProjectPageProps {
 }
 
 interface ProjectData {
-  [key: string]: {
-    // id: string;
-    name: string;
-    imagePath: string;
-    tools: string[];
-  };
+  [key: string]: Project;
 }
 
 const projects: ProjectData = projectData;
@@ -48,7 +45,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const path = projects[params.projectName].imagePath;
 
   return (
-    <body>
+    <div className="p-1">
       <title>{projects[id].name}</title>
       <div id="title" className="flex flex-row justify-center p-10">
         <h1 className="text-5xl">{projects[id].name}</h1>
@@ -56,7 +53,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       <div id="content-wrapper" className="flex flex-row justify-center">
         <div
           id="content"
-          className="flex flex-row justify-center flex-wrap max-w-[1200px]"
+          className="flex flex-row w-screen justify-center flex-wrap max-w-[1200px]"
         >
           <div
             id="picture"
@@ -84,6 +81,13 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               ))}
             </div>
             <h2 className="text-center text-3xl py-2">Additional Links</h2>
+            <div id="tools" className="flex flex-row flex-wrap justify-around">
+              {Object.entries(projects[id].links).map(([linkName, link]) => (
+                <a key={linkName} href={link}>
+                  <TechChip name={linkName} />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -94,6 +98,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </span>
         </Link>
       </div>
-    </body>
+    </div>
   );
 }
