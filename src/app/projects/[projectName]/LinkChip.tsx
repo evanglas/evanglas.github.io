@@ -3,6 +3,9 @@ import {
   faFile,
   fas,
   faHammer,
+  faGlobe,
+  faVideo,
+  faPlay,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faPython,
@@ -13,16 +16,14 @@ import {
   faGoogle,
   faGitlab,
   faJs,
+  faGithub,
+  faSlideshare,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition, config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 config.autoAddCss = false;
-
-interface TechChipProps {
-  name: string;
-}
 
 const toolIcons: { [tool: string]: IconDefinition } = {
   Java: faJava,
@@ -33,16 +34,25 @@ const toolIcons: { [tool: string]: IconDefinition } = {
   Google: faGoogle,
   GitLab: faGitlab,
   JavaScript: faJs,
+  GitHub: faGithub,
+  Writeup: faFile,
+  Report: faFile,
+  Demo: faVideo,
+  Slides: faFile,
 };
 
-export default function TechChip({ name }: TechChipProps) {
+interface LinkChipProps {
+  name: string;
+}
+
+export default function LinkChip({ name }: LinkChipProps) {
   return (
-    <div className="flex flex-row my-1 justify-between items-center hover:opacity-50 hover:translate-y-1 transition p-5 bg-emerald-200 rounded-xl w-fit h-fit">
+    <div className="text-emerald-300 flex flex-row my-1 justify-between items-center hover:opacity-50 transition p-5 border-2 border-black rounded-xl w-fit h-fit">
       {name}
       <FontAwesomeIcon
         size="lg"
         className="px-1"
-        icon={name in toolIcons ? toolIcons[name] : faHammer}
+        icon={name in toolIcons ? toolIcons[name] : faGlobe}
       ></FontAwesomeIcon>
     </div>
   );

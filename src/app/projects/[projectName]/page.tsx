@@ -3,9 +3,10 @@ import fs from "fs";
 
 import projectData from "../../projects.json" assert { type: "json" };
 import Link from "next/link";
-import TechChip from "../../TechChip";
+import TechChip from "./TechChip";
 
 import { Project } from "../../Project";
+import LinkChip from "./LinkChip";
 
 interface ProjectPageProps {
   params: {
@@ -64,27 +65,25 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               alt="Picture"
               fill={true}
               style={{ objectFit: "cover" }}
-              //   className="w-full"
             ></Image>
           </div>
-          <div id="information" className="max-w-[500px] flex flex-col mx-5">
+          <div
+            id="information"
+            className="max-w-[500px] flex flex-col justify-between mx-5"
+          >
             <h2 className="text-center text-3xl pb-4">Description</h2>
-            <p className="px-2">
-              {readFile(
-                "public/projectDescriptions/" + params.projectName + ".txt"
-              )}
-            </p>
+            <p className="px-2">{projects[id].description}</p>
             <h2 className="text-center text-3xl py-2">Tools Used</h2>
             <div id="tools" className="flex flex-row flex-wrap justify-around">
               {projects[id].tools.map((tool: string) => (
                 <TechChip key={tool} name={tool} />
               ))}
             </div>
-            <h2 className="text-center text-3xl py-2">Additional Links</h2>
+            <h2 className="text-center text-3xl py-2">Links</h2>
             <div id="tools" className="flex flex-row flex-wrap justify-around">
               {Object.entries(projects[id].links).map(([linkName, link]) => (
                 <a key={linkName} href={link}>
-                  <TechChip name={linkName} />
+                  <LinkChip name={linkName} />
                 </a>
               ))}
             </div>
