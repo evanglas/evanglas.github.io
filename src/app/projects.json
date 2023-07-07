@@ -1,7 +1,7 @@
 {
   "eceRISC": {
     "name": "ECE 651 Class Project: RISC",
-    "imagePath": "/projectImages/ece651game.png",
+    "imagePath": "/projectImages/ece651game.jpg",
     "tools": ["Java", "JavaFX", "Scene Builder"],
     "description": "Built a board game similar to Risk as part of several-week team project for ECE 651: Software Engineering (See Demo). Game allows multiplayer through remote server, UI implemented in JavaFX. (See GitLab)",
     "links": {
@@ -11,7 +11,7 @@
   },
   "geo": {
     "name": "AI GeoGuessr Clone",
-    "imagePath": "/projectImages/GeoGuessrClonePicture.png",
+    "imagePath": "/projectImages/GeoGuessrClonePicture.jpg",
     "tools": ["React", "Tailwind CSS", "Google Maps API"],
     "description": "Built an AI-enabled GeoGuessr clone as part of team project for ECE 489: System Design for Machine Learning class (See Demo). Responsible for most of front-end and game logic implemented using React JS, Google Maps API, and Tailwind. (See GitHub)",
     "links": {
@@ -31,7 +31,7 @@
   },
   "customer2": {
     "name": "Customer Analysis",
-    "imagePath": "/projectImages/RFMGraph.png",
+    "imagePath": "/projectImages/RFMGraph.jpg",
     "tools": ["Python", "Pandas", "scikit-learn", "Matplotlib"],
     "description": "Conducted customer segmentation (See Presentation), recency, frequency, monetary (RFM) analysis on Online Retail II Dataset. Determined factors strongly asssociated with high-value customers. Built XGBoost model with 90.8% accuracy, 0.97 AUC, to predict whether customer will make purchase in next 90 days.",
     "links": {
@@ -50,7 +50,7 @@
   },
   "eog": {
     "name": "EOG Independent Study",
-    "imagePath": "/projectImages/EOGBreadboardedCircuit.png",
+    "imagePath": "/projectImages/EOGBreadboardedCircuit.jpg",
     "tools": ["Altium", "MATLAB", "Breadboarding"],
     "description": "Designed and breadboarded an EOG (electrooculography) acquisition circuit as part of my independent study in Spring 2022. The circuit may be used to track gaze through a series of electrodes around subject's eyes. This design includes a driven right leg circuit in order to reduce the high common-mode interference of the EOG signals.",
     "links": {
@@ -59,7 +59,7 @@
   },
   "digit": {
     "name": "Spoken Digit Classification",
-    "imagePath": "/projectImages/digitScatterPlots.png",
+    "imagePath": "/projectImages/digitScatterPlots.jpg",
     "tools": ["Python", "Pandas", "Matplotlib", "scikit-learn"],
     "description": "Built a series of maximum likelihood models to classify spoken Arabic Digits using Cepstral Coefficients (see slides in GitHub repository). Achieved 84% accuracy on test set using k-means maximum likelihood classifier, and 96% using a Gaussian Mixture Model. Submitted as a class project for ECE 480, Applied Probability for Statistical Learning.",
     "links": {
@@ -78,7 +78,7 @@
   },
   "cs671": {
     "name": "CS 671 Kaggle Competition",
-    "imagePath": "/projectImages/PCA.png",
+    "imagePath": "/projectImages/PCA.jpg",
     "tools": ["Python", "Pandas", "Matplotlib", "XGBoost", "scikit-learn"],
     "description": "Built classifier (See Report) to predict employee attrition for CS 671 (Graduate Machine Learning) Kaggle Competition. Conducted feature engineering, exploratory data analysis via PCA, TSNE, UMAP algorithms, built XGBoost, AdaBoost, Logistic Regression models. Placed 6/145 in class of Ph.D., masters, and undergraduate students on public leaderboard by model accuracy.",
     "links": {
@@ -115,7 +115,7 @@
   },
   "thisWebsite": {
     "name": "This Website",
-    "imagePath": "/projectImages/thisWebsite.png",
+    "imagePath": "/projectImages/thisWebsite.jpg",
     "tools": [
       "JavaScript",
       "React",
