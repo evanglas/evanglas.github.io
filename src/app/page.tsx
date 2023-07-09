@@ -89,10 +89,9 @@ export default function Home() {
           <hr className="border-2 border-black w-full my-1" />
           Hi! I’m a recent Electrical & Computer Engineering + CS graduate and
           incoming MS in Electrical & Computer Engineering Student at Duke
-          University. I hold professional interests in quantitative finance,
-          data science, machine learning, and software engineering. I enjoy
-          solving difficult problems and building creative technical solutions.
-          Please feel free to explore some of my past projects!
+          University. I enjoy solving difficult problems and building creative
+          technical solutions. Please feel free to explore some of my past
+          projects!
           <hr className="border-2 border-black w-full my-1" />
         </div>
       </div>
