@@ -37,7 +37,7 @@ const toolIcons: { [tool: string]: IconDefinition } = {
 
 export default function TechChip({ name }: TechChipProps) {
   return (
-    <div className="flex flex-row my-1 justify-between items-center transition p-5 bg-emerald-200 rounded-xl w-fit h-fit">
+    <div className="mx-2 flex flex-row my-1 justify-between items-center transition p-3 bg-emerald-200 rounded-xl w-fit h-fit">
       {name}
       <FontAwesomeIcon
         size="lg"

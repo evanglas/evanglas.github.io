@@ -74,7 +74,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <h2 className="text-center text-3xl pb-4">Description</h2>
             <p className="px-2">{projects[id].description}</p>
             <h2 className="text-center text-3xl py-2">Tools Used</h2>
-            <div id="tools" className="flex flex-row flex-wrap justify-around">
+            <div id="tools" className="flex flex-row flex-wrap">
               {projects[id].tools.map((tool: string) => (
                 <TechChip key={tool} name={tool} />
               ))}
@@ -82,7 +82,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <h2 className="text-center text-3xl py-2">Links</h2>
             <div id="tools" className="flex flex-row flex-wrap justify-around">
               {Object.entries(projects[id].links).map(([linkName, link]) => (
-                <a key={linkName} href={link}>
+                <a key={linkName} href={link} target="_blank">
                   <LinkChip name={linkName} />
                 </a>
               ))}

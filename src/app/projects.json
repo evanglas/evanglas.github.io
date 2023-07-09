@@ -149,5 +149,34 @@
     "links": {
       "Poster": "https://github.com/evanglas/Class-Projects/blob/master/EGR%20101%20Final%20Project/Soiling%20Sensor%20Poster.pdf"
     }
+  },
+  "math585": {
+    "name": "Algorithmic Trading Project",
+    "imagePath": "/projectImages/math585.jpg",
+    "tools": ["Python", "PyPortfolioOpt", "QuantConnect"],
+    "description": "Submitted linked report as final group project for Math 585: Intro to Algorithmic Trading. As a team, developed an algorithm involving an options dispersion and pairs trading strategy with paris selected through UMAP. I was largely responsible for capital allocation between strategies for which I determined optimal portfolio weights through regularized convex optimization via the PyPortfolioOpt library.",
+    "links": {
+      "Report": "https://github.com/evanglas/Algorithmic-Trading-Project/tree/main"
+    }
+  },
+  "v1website": {
+    "name": "Legacy Personal Website",
+    "imagePath": "/projectImages/v1website.png",
+    "tools": ["HTML", "CSS", "JavaScript"],
+    "description": "Built my first personal portfolio website using HTML, CSS, and Javascript. Feel free to check out evanglas.com V1!",
+    "links": {
+      "Website": "https://evanglas.github.io",
+      "GitHub": "https://github.com/evanglas/evanglas.github.io"
+    }
+  },
+  "moreMusic": {
+    "name": "MoreMusic Website",
+    "imagePath": "/projectImages/moreMusic.jpg",
+    "tools": ["React", "HTML", "CSS"],
+    "description": "My team and I at HackDuke21 built a website designed to connect instrument donors with underprivledged students. I worked on the frontend which was built with React, HTML, and CSS.",
+    "links": {
+      "Website": "https://moremusic.vercel.app/",
+      "GitHub": "https://github.com/timjang3/hackduke21"
+    }
   }
 }
