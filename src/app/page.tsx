@@ -40,6 +40,7 @@ export default function Home() {
               title="Picture"
               src={profile_picture}
               alt="Profile Picture"
+              priority={true}
               className="rounded-2xl w-52 md:w-80"
             />
           </div>
@@ -87,11 +88,10 @@ export default function Home() {
         </div>
         <div id="about_text" className="px-4 text-left w-full md:pt-4">
           <hr className="border-2 border-black w-full my-1" />
-          Hi! I’m a recent Electrical & Computer Engineering + CS graduate and
-          incoming MS in Electrical & Computer Engineering Student at Duke
-          University. I enjoy solving difficult problems and building creative
-          technical solutions. Please feel free to explore some of my past
-          projects!
+          Hi! Hi! I’m an incoming MS in Electrical & Computer Engineering (ECE)
+          student and recent ECE, CS graduate at Duke University. I enjoy
+          solving difficult problems and building creative technical solutions.
+          Please feel free to explore some of my past projects!
           <hr className="border-2 border-black w-full my-1" />
         </div>
       </div>

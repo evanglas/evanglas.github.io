@@ -1,5 +1,4 @@
 import Image from "next/image";
-import fs from "fs";
 
 import projectData from "../../projects.json" assert { type: "json" };
 import Link from "next/link";
@@ -7,6 +6,8 @@ import TechChip from "./TechChip";
 
 import { Project } from "../../Project";
 import LinkChip from "./LinkChip";
+
+import { Metadata, ResolvingMetadata } from "next";
 
 interface ProjectPageProps {
   params: {
@@ -20,16 +21,6 @@ interface ProjectData {
 
 const projects: ProjectData = projectData;
 
-function readFile(filePath: string): string {
-  try {
-    const text = fs.readFileSync(filePath, "utf-8");
-    return text;
-  } catch (error) {
-    console.error(`${error}`);
-    return "";
-  }
-}
-
 interface ProjectName {
   projectName: string;
 }
@@ -41,9 +32,21 @@ export async function generateStaticParams() {
   return namesDict;
 }
 
+export async function generateMetadata(
+  { params }: ProjectPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params.projectName;
+
+  return {
+    title: projects[id].name,
+    description: projects[id].description,
+  };
+}
+
 export default function ProjectPage({ params }: ProjectPageProps) {
   const id = params.projectName;
-  const path = projects[params.projectName].imagePath;
+  const path = projects[id].imagePath;
 
   return (
     <div className="p-1">
@@ -64,6 +67,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               src={path}
               alt="Picture"
               fill={true}
+              priority={true}
+              sizes="(min-width: 1280 px) 500px, 400px"
               style={{ objectFit: "cover" }}
             ></Image>
           </div>

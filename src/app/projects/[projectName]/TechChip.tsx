@@ -1,9 +1,4 @@
-import {
-  faEnvelope,
-  faFile,
-  fas,
-  faHammer,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHammer } from "@fortawesome/free-solid-svg-icons";
 import {
   faPython,
   faJava,

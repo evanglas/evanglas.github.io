@@ -33,7 +33,7 @@ export default function ProjectCard(props: ProjectCardProps) {
     <motion.div
       initial="offscreen"
       whileInView="onscreen"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
       id="outer_wrapper"
     >
       <motion.div className="w-72 h-72 lg:w-80 lg:h-80" variants={cardVariants}>
@@ -47,6 +47,7 @@ export default function ProjectCard(props: ProjectCardProps) {
               alt="Picture"
               fill={true}
               style={{ objectFit: "cover" }}
+              sizes="288px"
               className="h-full"
             />
           </div>
