@@ -23,7 +23,7 @@
     "name": "Algorithmic Trading Project",
     "imagePath": "/projectImages/math585.jpg",
     "tools": ["Python", "PyPortfolioOpt", "QuantConnect"],
-    "description": "Submitted linked report as final group project for Math 585: Intro to Algorithmic Trading. As a team, developed an algorithm involving an options dispersion and pairs trading strategy with paris selected through UMAP. I was largely responsible for capital allocation between strategies for which I determined optimal portfolio weights through regularized convex optimization via the PyPortfolioOpt library.",
+    "description": "Submitted linked report as final group project for Math 585: Intro to Algorithmic Trading. As a team, developed an algorithm involving an options dispersion and pairs trading strategy with pairs selected through UMAP. I was largely responsible for capital allocation between strategies for which I determined optimal portfolio weights through regularized convex optimization via the PyPortfolioOpt library.",
     "links": {
       "Report": "https://github.com/evanglas/Algorithmic-Trading-Project/tree/main"
     }
