@@ -15,7 +15,7 @@
     "tools": ["HTML", "CSS", "JavaScript", "paper.js"],
     "description": "Built an interactive clustering visualizer which implements k-means and DBSCAN (density-based spatial clustering of applications with noise). Used paper.js for canvas graphics.",
     "links": {
-      "Simulator": "https://evanglas.com/cluster.html",
+      "Simulator": "https://evanglas.github.io/cluster.html",
       "GitHub": "https://github.com/evanglas/Clustering-Simulator"
     }
   },
@@ -61,7 +61,7 @@
     "name": "Customer Analysis",
     "imagePath": "/projectImages/RFMGraph.jpg",
     "tools": ["Python", "Pandas", "scikit-learn", "Matplotlib"],
-    "description": "Conducted customer segmentation (See Presentation), recency, frequency, monetary (RFM) analysis on Online Retail II Dataset. Determined factors strongly asssociated with high-value customers. Built XGBoost model with 90.8% accuracy, 0.97 AUC, to predict whether customer will make purchase in next 90 days.",
+    "description": "Conducted customer segmentation (See Presentation), recency, frequency, monetary (RFM) analysis on Online Retail II Dataset. Determined factors strongly associated with high-value customers. Built XGBoost model with 90.8% accuracy, 0.97 AUC, to predict whether customer will make purchase in next 90 days.",
     "links": {
       "Presentation": "https://github.com/evanglas/Online-Retail-II-Data-Set-Analysis/blob/master/Online%20Retail%20II%20Data%20Set%20Analysis.pdf",
       "Dataset": "https://archive.ics.uci.edu/ml/datasets/Online+Retail+II"
@@ -99,7 +99,7 @@
     "tools": ["HTML", "CSS", "JavaScript", "HTML Canvas"],
     "description": "Made a pong game with few additional features using JS, HTML Canvas, and CSS.",
     "links": {
-      "Game": "https://evanglas.com/pong.html",
+      "Game": "https://evanglas.github.io/pong.html",
       "GitHub": "https://github.com/evanglas/Pong"
     }
   },
