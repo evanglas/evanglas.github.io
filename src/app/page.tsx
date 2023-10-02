@@ -88,10 +88,10 @@ export default function Home() {
         </div>
         <div id="about_text" className="px-4 text-left w-full md:pt-4">
           <hr className="border-2 border-black w-full my-1" />
-          Hi! I’m an incoming MS in Electrical & Computer Engineering (ECE)
-          student and recent ECE, CS graduate at Duke University. I enjoy
-          solving difficult problems and building creative technical solutions.
-          Please feel free to explore some of my past projects!
+          Hi! I’m an MS in Electrical & Computer Engineering (ECE) student and
+          recent ECE, CS graduate at Duke University. I enjoy solving difficult
+          problems and building creative technical solutions. Please feel free
+          to explore some of my past projects!
           <hr className="border-2 border-black w-full my-1" />
         </div>
       </div>
