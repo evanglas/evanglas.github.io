@@ -17,6 +17,7 @@ import {
   faGitlab,
   faJs,
   faGithub,
+  faChrome,
   faSlideshare,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,6 +40,7 @@ const toolIcons: { [tool: string]: IconDefinition } = {
   Report: faFile,
   Demo: faVideo,
   Slides: faFile,
+  "Chrome Store": faChrome,
 };
 
 interface LinkChipProps {

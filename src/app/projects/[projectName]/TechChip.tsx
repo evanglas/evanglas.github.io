@@ -8,6 +8,9 @@ import {
   faGoogle,
   faGitlab,
   faJs,
+  faAws,
+  faMicrosoft,
+  faChrome,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition, config } from "@fortawesome/fontawesome-svg-core";
@@ -28,6 +31,14 @@ const toolIcons: { [tool: string]: IconDefinition } = {
   Google: faGoogle,
   GitLab: faGitlab,
   JavaScript: faJs,
+  "AWS Lambda": faAws,
+  "OpenAI API": faMicrosoft,
+  "Chrome Extension API": faChrome,
+  Pandas: faPython,
+  NumPy: faPython,
+  PyTorch: faPython,
+  "scikit-learn": faPython,
+  NLTK: faPython,
 };
 
 export default function TechChip({ name }: TechChipProps) {

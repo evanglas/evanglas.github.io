@@ -1,4 +1,22 @@
 {
+  "elucidate": {
+    "name": "Elucidate Chrome Extension",
+    "imagePath": "/projectImages/elucidate.png",
+    "tools": [
+      "JavaScript",
+      "OpenAI API",
+      "AWS Lambda",
+      "Chrome Extension API",
+      "HTML",
+      "CSS"
+    ],
+    "description": "Built a Chrome Extension to convert the reading level and/or language of highlighted text in place. Won Education Track, People’s Choice Award at Duke Generative AI Hackathon.",
+    "links": {
+      "Chrome Store": "https://chromewebstore.google.com/detail/elucidate/ihjnlbpbiipblaciebfnhkbiidnnillf",
+      "GitHub": "https://github.com/evanglas/Duke-Generative-AI-Hackathon",
+      "DevPost": "https://devpost.com/software/elucidate-ycvbs5"
+    }
+  },
   "geo": {
     "name": "AI GeoGuessr Clone",
     "imagePath": "/projectImages/GeoGuessrClonePicture.jpg",
@@ -26,6 +44,16 @@
     "description": "Submitted linked report as final group project for Math 585: Intro to Algorithmic Trading. As a team, developed an algorithm involving an options dispersion and pairs trading strategy with pairs selected through UMAP. I was largely responsible for capital allocation between strategies for which I determined optimal portfolio weights through regularized convex optimization via the PyPortfolioOpt library.",
     "links": {
       "Report": "https://github.com/evanglas/Algorithmic-Trading-Project/tree/main"
+    }
+  },
+  "ece684_project": {
+    "name": "Election Outcome Prediction via NLP",
+    "imagePath": "/projectImages/ece684_project.png",
+    "tools": ["Python", "PyTorch", "scikit-learn", "NLTK", "Pandas"],
+    "description": "Built models to predict 2020 county-level election outcomes via Covid-related excerpts from local news. Submitted as final class project for ECE 684, Natural Language Processing.",
+    "links": {
+      "GitHub": "https://github.com/evanglas/Election-Outcome-Prediction-via-NLP/tree/main",
+      "Report": "https://nbviewer.org/github/evanglas/Election-Outcome-Prediction-via-NLP/blob/main/final_project_report.pdf"
     }
   },
   "eceRISC": {
