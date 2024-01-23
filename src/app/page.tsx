@@ -11,6 +11,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import { Project } from "./Project";
 import ProjectCard from "./ProjectCard";
+import MainMenu from "./MainMenu";
 import Arrow from "./Arrow";
 
 import projectData from "./projects.json" assert { type: "json" };
@@ -102,9 +103,10 @@ export default function Home() {
         <Arrow />
       </div>
       <div id="projects" className="flex flex-col items-center">
-        <div id="projects_title" className="text-center w-full mb-5 text-5xl">
+        <MainMenu />
+        {/* <div id="projects_title" className="text-center w-full mb-5 text-5xl">
           Projects
-        </div>
+        </div> */}
         <div
           id="project_cards"
           className="flex flex-row flex-wrap justify-around max-w-7xl"

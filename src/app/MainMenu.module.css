@@ -1,0 +1,16 @@
+.menuItem {
+  cursor: pointer;
+  padding: 10px;
+  transition: border-bottom 0.3s ease-in-out;
+}
+
+.selected {
+  border-bottom: 2px solid black;
+}
+
+.content {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  min-height: 50px;
+}
