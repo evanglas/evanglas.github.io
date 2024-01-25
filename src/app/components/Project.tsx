@@ -1,4 +1,4 @@
-export interface Project {
+export default interface Project {
   name: string;
   imagePath: string;
   tools: string[];

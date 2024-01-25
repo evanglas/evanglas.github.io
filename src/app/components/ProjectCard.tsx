@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Project } from "./Project";
+import Project from "./Project";
 
 interface ProjectCardProps {
   id: string;

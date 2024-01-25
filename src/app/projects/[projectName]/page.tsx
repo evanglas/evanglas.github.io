@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-import projectData from "../../projects.json" assert { type: "json" };
+import projectData from "../../components/projects.json" assert { type: "json" };
 import Link from "next/link";
 import TechChip from "./TechChip";
 
-import { Project } from "../../Project";
+import Project from "../../components/Project";
 import LinkChip from "./LinkChip";
 
 import { Metadata, ResolvingMetadata } from "next";

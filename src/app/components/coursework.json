@@ -1,0 +1,9 @@
+{
+  "COMPSCI 201": {
+    "departmentCode": "COMPSCI",
+    "departmentName": "Computer Science",
+    "courseNumber": "201",
+    "courseName": "Data Structures and Algorithms",
+    "courseDescription": "Data Structures and Algorithms"
+  }
+}
