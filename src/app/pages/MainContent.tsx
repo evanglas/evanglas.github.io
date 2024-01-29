@@ -2,6 +2,7 @@ import { useState } from "react";
 import MainMenu from "../components/MainMenu";
 import Projects from "../components/Projects";
 import Courses from "../components/Courses";
+import OtherPart from "../components/OtherPart";
 
 export default function MainContent() {
   const [activeItem, setActiveItem] = useState<string>("Projects");
@@ -12,13 +13,13 @@ export default function MainContent() {
       case "Coursework":
         return <Courses />;
       case "Other":
-        return <div>Other</div>;
+        return <OtherPart />;
       default:
         return <Projects />;
     }
   };
   return (
-    <div className="flex flex-col items-center xl:w-[1500px] lg:w-[1024px] md:w-auto">
+    <div className="flex flex-col items-center xl:w-[1500px] lg:w-[1024px] md:w-[768px] w-[500px]">
       <MainMenu activeItem={activeItem} handleItemSelect={setActiveItem} />
       <div className="flex flex-col items-center">{renderMainContent()}</div>
     </div>

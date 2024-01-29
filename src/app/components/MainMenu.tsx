@@ -17,14 +17,14 @@ const MainMenu = (props: {
     { name: "Other" },
   ];
   return (
-    <nav className="flex flex-row justify-around w-[1024px]">
+    <nav className="flex flex-row flex-wrap justify-around lg:w-[1024px] md:w-[768px] w-[500px]">
       {menuItems.map((item) => (
         <div
           key={item.name}
           // Include additional classes along with the conditional styles.selected class
           className={`${
             props.activeItem === item.name ? styles.selected : ""
-          } ${styles.menuItem} text-5xl hover:cursor-pointer`}
+          } ${styles.menuItem} text-5xl hover:cursor-pointer ml-5 mr-5`}
           onClick={() => props.handleItemSelect(item.name)}
         >
           {item.name}

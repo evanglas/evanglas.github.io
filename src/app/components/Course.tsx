@@ -4,4 +4,7 @@ export default interface Course {
   courseNumber: string;
   courseName: string;
   courseDescription: string;
+  term: string;
+  year: string;
+  crosslistings?: { departmentCode: string; courseNumber: string }[];
 }

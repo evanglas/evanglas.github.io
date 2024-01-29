@@ -4,6 +4,350 @@
     "departmentName": "Computer Science",
     "courseNumber": "201",
     "courseName": "Data Structures and Algorithms",
-    "courseDescription": "Data Structures and Algorithms"
+    "courseDescription": "Analysis, use, and design of data structures and algorithms using an object-oriented language like Java to solve computational problems. Emphasis on abstraction including interfaces and abstract data types for lists, trees, sets, tables/maps, and graphs. Implementation and evaluation of programming techniques including recursion. Intuitive and rigorous analysis of algorithms.",
+    "term": "Fall",
+    "year": "2020"
+  },
+  "COMPSCI 330": {
+    "departmentCode": "COMPSCI",
+    "departmentName": "Computer Science",
+    "courseNumber": "330",
+    "courseName": "Design and Analysis of Algorithms",
+    "courseDescription": "Design and analysis of efficient algorithms including sorting, searching, dynamic programming, graph algorithms, fast multiplication, and others; nondeterministic algorithms and computationally hard problems.",
+    "term": "Spring",
+    "year": "2022"
+  },
+  "COMPSCI 356": {
+    "departmentCode": "COMPSCI",
+    "departmentName": "Computer Science",
+    "courseNumber": "356",
+    "courseName": "Computer Network Archiecture",
+    "courseDescription": "Introduces students to the fundamentals of computer networks. Focus on layered architecture of the network protocol stack. Case studies drawn from the Internet, combined with practical programming exercises. Concepts include the Internet architecture, HTTP, DNS, P2P, Sockets, TCP/IP, BGP, routing protocols, and wireless/mobile networking and their applications such as how to achieve reliable/secure communications over channels, how to find a good path through a network, how to share network resources among competing entities, how to find an object in the network, and how to build network applications.",
+    "term": "2022",
+    "year": "Fall"
+  },
+  "COMPSCI 371D": {
+    "departmentCode": "COMPSCI",
+    "departmentName": "Computer Science",
+    "courseNumber": "371D",
+    "courseName": "Elements of Machine Learning",
+    "courseDescription": "Fundamental concepts of supervised machine learning, with sample algorithms and applications. Focuses on how to think about machine learning problems and solutions, rather than on a systematic coverage of techniques. Serves as an introduction to the methods of machine learning.",
+    "term": "Fall",
+    "year": "2021"
+  },
+  "COMPSCI 516": {
+    "departmentCode": "COMPSCI",
+    "departmentName": "Computer Science",
+    "courseNumber": "516",
+    "courseName": "Database Systems",
+    "courseDescription": "Principles and techniques for making intelligent use of the massive amounts of data generated in commerce, industry, science, and society. Topics include basic concepts in databases (SQL, relational algebra, relational calculus, normal forms), indexing and hashing, query processing and query optimizations, transactions (concurrency control and recovery), parallel and distributed data processing, NOSQL and column store, and selected advanced topics (e.g. Datalog, cloud computing fault-tolerant / self-tuning data management, Web information retrieval/extraction, data warehouse, OLAP, data mining).",
+    "term": "Spring",
+    "year": "2024"
+  },
+  "COMPSCI 527": {
+    "departmentCode": "COMPSCI",
+    "departmentName": "Computer Science",
+    "courseNumber": "527",
+    "courseName": "Computer Vision",
+    "courseDescription": "Image formation and analysis; feature computation and tracking; image, object, and activity recognition and retrieval; 3D reconstruction from images.",
+    "term": "Spring",
+    "year": "2024"
+  },
+  "ECE 110L": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "110L",
+    "courseName": "Fundamentals of Electrical and Computer Engineering",
+    "courseDescription": "Students learn core ECE concepts, providing a foundation on which subsequent courses build. Concepts include techniques for analyzing linear circuits, semiconductor and photonic devices, frequency representation, filtering, combinational and sequential logic. Central to the course is an extensive design challenge that requires students to integrate knowledge across topics while honing practical design and project management skills. Course culminates in an exciting competition in which teams of robots race to overcome challenging obstacles using sensor data acquisition and processing.",
+    "term": "Spring",
+    "year": "2021"
+  },
+  "ECE 230L": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "230L",
+    "courseName": "Microelectronic Devices and Circuits",
+    "courseDescription": "Introduction to semiconductor materials and their corresponding electronic devices and circuits. In lab, students will perform photolithography and characterize devices and circuits. Lecture will cover: underlying physics of semiconductor materials; operation of semiconductor devices, including diodes and transistors (MOSFETs); and application of MOSFETs into digital circuits. Students will understand basic operation of semiconductor devices in a way that is foundational for the expansive semiconductor industry",
+    "term": "Spring",
+    "year": "2021"
+  },
+  "ECE 250D": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "250D",
+    "courseName": "Computer Architecture",
+    "courseDescription": "Computer structure, assembly language, instruction execution, addressing techniques, and digital representation of data. Computer system organization, logic design, microprogramming, cache and memory systems, and input/output interfaces",
+    "term": "Summer",
+    "year": "2021"
+  },
+  "ECE 270DL": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "270DL",
+    "courseName": "Fields and Waves: Fundamentals of Information Propagation",
+    "courseDescription": "Introduces the concept of fields - a mathematical description of physical quantities that vary from place to place (and potentially from time to time) - and explores the mathematical & physical reasons that oscillatory behavior is so ubiquitous across engineering and physics. Introduces mathematical foundations, followed by specific examples in electrical circuits, electromagnetic waves, quantum mechanics, & acoustics as well as the connection to Fourier analysis methods. Intended to facilitate subsequent study in any area involving wave phenomena, including analog & microwave circuits, electromagnetics, optics, & quantum mechanics.",
+    "term": "Spring",
+    "year": "2022"
+  },
+  "ECE 280L": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "280L",
+    "courseName": "Signals and Systems",
+    "courseDescription": "Introduction to signals, signal properties, systems, and system properties. Time and frequency domain analysis of signals and systems. Exploration of filtering, sampling, communication systems, image processing, and other real-world applications. Laboratory projects using signal processing tools to investigate real world scenarios. Computational analysis of one and two dimensional signals and systems.",
+    "term": "Fall",
+    "year": "2021"
+  },
+  "ECE 353": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "353",
+    "courseName": "Operating Systems",
+    "courseDescription": "Basic concepts and principles of multiprogrammed operating systems. Processes, interprocess communication, CPU scheduling, mutual exclusion, deadlocks, memory management, I/O devices, file systems, protection mechanisms.",
+    "term": "Fall",
+    "year": "2022"
+  },
+  "ECE 461": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "461",
+    "courseName": "Ocean Engineering",
+    "courseDescription": "A challenging Ocean Engineering project will be undertaken in this class. Past examples include participation in a national XPRIZE contest to build an Ocean Sensor. Students define project scope and form task-oriented sub-teams to make significant progress toward overall class project goal. Students are expected to spend several hours per week outside of class working on the team projects. Students will need to be in teams that can all meet for at least couple of hours at the same time each week.",
+    "term": "Fall",
+    "year": "2022"
+  },
+  "ECE 480": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "480",
+    "courseName": "Applied Probability for Statistical Learning",
+    "courseDescription": "This course discusses topics in Bayesian probability and its application to foundations of statistical learning. The primary objectives of the course are to provide a mathematically rigorous foundation in Bayesian probability and inference, develop strong intuition for Bayesian constructs, provide a foundation in statistical learning, and to show how Bayesian methods are fundamental to a variety of modern statistical learning techniques. Topics include probabilistic reasoning, Bayesian inference, linear models, mixture models, and model selection.",
+    "term": "Fall",
+    "year": "2021"
+  },
+  "ECE 487": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "487",
+    "courseName": "System Design for Machine Learning and Signal Processing",
+    "courseDescription": "Small groups work through design process for a machine learning &/or signal processing system. Brainstorming ideas, reviewing modern techniques in ML & SP, choosing & implementing projects. Use of modern collaboration tools & techniques that allow agile collaborative group design & development, consideration of resources, delivery of written & oral presentations, consideration of appropriate engineering standards & realistic constraints.",
+    "term": "Spring",
+    "year": "2023"
+  },
+  "ECE 565": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "565",
+    "courseName": "Performance Optimization & Parallelism",
+    "courseDescription": "Analyzing and optimizing the performance of software, in both a single- and multi-threaded setting. Apply knowledge of hardware, programming, and assembly to both tasks. Single-threaded performance topics include code profiling & analysis, loop transformation, analysis of interaction of code & memory hierarchy, assembly level instruction scheduling impacts. Multi-threaded topics include scalability & load balance. For students with strong foundation of programming skills in high-level languages, assembly language, and computer architecture & design.",
+    "term": "Fall",
+    "year": "2023"
+  },
+  "ECE 586D": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "586D",
+    "courseName": "Vector Space Methods with Applications",
+    "courseDescription": "Key concepts from advanced linear algebra that are used regularly in ECE/CS journal papers on signal processing, communications, circuit design, and machine learning (e.g., logic, topology, vector spaces, optimization). Key mathematical ideas/proofs will be presented and applied. Uses application topics such as Markov chains, alternating projections, pattern classification to illustrate important mathematical topics. Background in linear algebra, a high-level programming language, and probability is assumed.",
+    "term": "Fall",
+    "year": "2023"
+  },
+  "ECE 651": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "651",
+    "courseName": "Software Engineering",
+    "courseDescription": "Teaches students about all steps of the software development lifecycle: requirements definition, design, development, testing, and maintenance. The course assumes students are skilled object-oriented programmers from prior courses, but will include a rapid introduction to Java. Students complete team-based semester-long software project which will progress through all phases of the software lifecycle.",
+    "term": "Spring",
+    "year": "2023"
+  },
+  "ECE 684": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "684",
+    "courseName": "Natural Language Processing",
+    "courseDescription": "Introduction to algorithmic and analytic methods specific to textual data. Subject areas covered are speech recognition, optical character recognition, text parsing, and document analysis. Analysis tools taught include sentiment analysis/topic models, auto-correct, auto-complete, and translation systems. Applications to brain-computer interface communication systems, intelligent personal assistants, and plagiarism detection systems.",
+    "term": "Fall",
+    "year": "2023"
+  },
+  "ECE 685D": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "685D",
+    "courseName": "Deep Learning",
+    "courseDescription": "Provides an introduction to the machine learning technique called deep learning or deep neural networks. A focus will be the mathematical formulations of deep networks and an explanation of how these networks can be structured and 'learned' from big data. Discussion section covers practical applications, programming, and modern implementation practices. Example code and assignments will be given in Python with heavy utilization of PyTorch (or Tensorflow) package. The course and a project will cover various applications including image classification, text analysis, object detection, etc.",
+    "term": "Fall",
+    "year": "2023"
+  },
+  "ECE 687D": {
+    "departmentCode": "ECE",
+    "departmentName": "Elecrical & Computer Engineering",
+    "courseNumber": "687D",
+    "courseName": "Theory and Algorithms for Machine Learning",
+    "courseDescription": "This is an introductory overview course at an advanced level. Covers standard techniques, such as the perceptron algorithm, decision trees, random forests, boosting, support vector machines and reproducing kernel Hilbert spaces, regression, K-means, Gaussian mixture models and EM, neural networks, and multi-armed bandits. Covers introductory statistical learning theory.",
+    "term": "Fall",
+    "year": "2022"
+  },
+  "ECON 101D": {
+    "departmentCode": "ECON",
+    "departmentName": "Economics",
+    "courseNumber": "101D",
+    "courseName": "Economic Principles",
+    "courseDescription": "Basic microeconomic concepts such as demand and supply, market structures and pricing, market efficiency and equilibrium. Macroeconomic concepts such as inflation, unemployment, trade, economic growth and development. Different perspectives on issues of monetary and fiscal policy. Emphasis on public policy issues and the logic behind the economic way of thinking.",
+    "term": "Fall",
+    "year": "2020"
+  },
+  "ECON 372": {
+    "departmentCode": "ECON",
+    "departmentName": "Economics",
+    "courseNumber": "372",
+    "courseName": "Asset Pricing & Risk Management",
+    "courseDescription": "Integrates micro and macro economics with topics in finance. Utility maximization within mean variance framework for portfolio analysis and capital asset pricing model. Corporate valuation and discounted cash flow analysis. Capital structure and principal-agent problem will lead into a discussion of the Efficient Markets Hypothesis and underlying assumptions. Market pricing, forecasting, and financial crises.",
+    "term": "Spring",
+    "year": "2023"
+  },
+  "ECON 612": {
+    "departmentCode": "ECON",
+    "departmentName": "Economics",
+    "courseNumber": "612",
+    "courseName": "Time Series Economics",
+    "courseDescription": "Empirical research in macroeconomics and international finance, providing students with a series of econometric tools for empirical analysis of time-series and an introduction to the current empirical research in macroeconomics, international finance, and forecasting. Small project and simple empirical research required.",
+    "term": "Spring",
+    "year": "2024"
+  },
+  "ECON 674": {
+    "departmentCode": "ECON",
+    "departmentName": "Economics",
+    "courseNumber": "674",
+    "courseName": "Financial Derivatives",
+    "courseDescription": "A rigorous introduction to financial derivatives with applications. Topics include: binomial trees and geometric Brownian motion; European options, American options, forwards, and futures; put-call parity; the Black-Scholes-Merton pricing formula and its derivations; Delta and Gamma hedging; implied volatility; Merton jump-diffusion model; Heston model; GARCH(1,1) model.",
+    "term": "Spring",
+    "year": "2023"
+  },
+  "MATH 221D": {
+    "departmentCode": "MATH",
+    "departmentName": "Mathematics",
+    "courseNumber": "221D",
+    "courseName": "Linear Algebra and Applications",
+    "courseDescription": "Systems of linear equations and elementary row operations, Euclidean n-space and subspaces, linear transformations and matrix representations, Gram-Schmidt orthogonalization process, determinants, eigenvectors and eigenvalues; applications. Introduction to proofs. A gateway to more advanced math courses.",
+    "term": "Fall",
+    "year": "2020"
+  },
+  "MATH 222": {
+    "departmentCode": "MATH",
+    "departmentName": "Mathematics",
+    "courseNumber": "222",
+    "courseName": "Advanced Multivariable Calculus",
+    "courseDescription": "Partial differentiation, multiple integrals, and topics in differential and integral vector calculus, including Green's theorem, Stokes's theorem, and Gauss's theorem for students with a background in linear algebra.",
+    "term": "Spring",
+    "year": "2021"
+  },
+  "MATH 230": {
+    "departmentCode": "MATH",
+    "departmentName": "Mathematics",
+    "courseNumber": "230",
+    "courseName": "Probability",
+    "courseDescription": "Probability models, random variables with discrete and continuous distributions. Independence, joint distributions, conditional distributions. Expectations, functions of random variables, central limit theorem.",
+    "term": "Spring",
+    "year": "2021"
+  },
+  "MATH 353": {
+    "departmentCode": "MATH",
+    "departmentName": "Mathematics",
+    "courseNumber": "353",
+    "courseName": "Ordinary and Partial Differential Equations",
+    "courseDescription": "First and second order ordinary differential equations with applications, Laplace transforms, series solutions and qualitative behavior, Fourier series, partial differential equations, boundary value problems, Sturm-Liouville theory.",
+    "term": "Spring",
+    "year": "2022"
+  },
+  "MATH 585": {
+    "departmentCode": "MATH",
+    "departmentName": "Mathematics",
+    "courseNumber": "585",
+    "courseName": "Introduction to Algorithmic Trading – Financial Data and Modeling",
+    "courseDescription": "In this course on the complexity of financial data and the challenges in modeling them students will learn a variety of financial data sets, perform research and analysis on these data, and develop mathematical models for profitable trading and investment strategies. Includes group projects designing algorithms in a live trading environment based on financial/mathematical theories. Industry guests will discuss real-world practices.",
+    "term": "Spring",
+    "year": "2023"
+  },
+  "STA 532": {
+    "departmentCode": "STA",
+    "departmentName": "Statistical Science",
+    "courseNumber": "532",
+    "courseName": "Theory of Statistical Inference",
+    "courseDescription": "Core mathematical foundations of classical and Bayesian statistical inference. Theory of point and interval estimation and testing based on efficiency, consistency, sufficiency and robustness. Maximum likelihood, moments and non-parametric methods based on exact or large sample distribution theory; associated EM, asymptotic normality and bootstrap computational techniques. Theoretical aspects of objective Bayesian inference, prediction, and testing. Selected additional topics drawn from, for example, multiparameter testing, contingency tables, multiplicity studies.",
+    "term": "Spring",
+    "year": "2024"
+  },
+  "STA 563": {
+    "departmentCode": "STA",
+    "departmentName": "Statistical Science",
+    "courseNumber": "563",
+    "courseName": "Information Theory",
+    "courseDescription": "Information theory is the science of processing, transmitting, storing, and using information. This course provides an introduction to mathematical measures of information and their connection to practical problems in communication, compression, and inference. Entropy, mutual information, lossless data compression, channel capacity, Gaussian channels, rate distortion theory, Fisher information. Useful for researchers in a variety of fields, including signal processing, machine learning, statistics, and neuroscience.",
+    "term": "Fall",
+    "year": "2023"
+  },
+  "STA 602L": {
+    "departmentCode": "STA",
+    "departmentName": "Statistical Science",
+    "courseNumber": "602L",
+    "courseName": "Bayesian Statistical Modeling and Data Analysis",
+    "courseDescription": "Principles of data analysis and modern statistical modeling. Exploratory data analysis. Introduction to Bayesian inference, prior and posterior distributions, hierarchical models, model checking and selection, missing data, introduction to stochastic simulation by Markov chain Monte Carlo using a higher level statistical language such as R or Matlab. Applications drawn from various disciplines.",
+    "term": "Spring",
+    "year": "2024"
+  },
+  "THEATRST 145S": {
+    "departmentCode": "THEATRST",
+    "departmentName": "Theater Studies",
+    "courseNumber": "145S",
+    "courseName": "Acting",
+    "courseDescription": "The fundamentals of acting realism explored through exercises, scene study, and text analysis. Introduction to voice and movement training for the actor. Theory and text analysis studied in their historical context as well as their contemporary relevance.",
+    "term": "Spring",
+    "year": "2023"
+  },
+  "WRITING 101": {
+    "departmentCode": "WRITING",
+    "departmentName": "Writing",
+    "courseNumber": "101",
+    "courseName": "Academic Writing",
+    "courseDescription": "Instruction in the complexities of producing sophisticated academic argument, with attention to critical analysis and rhetorical practices.",
+    "term": "Spring",
+    "year": "2021"
+  },
+  "EGR 101L": {
+    "departmentCode": "EGR",
+    "departmentName": "Engineering",
+    "courseNumber": "101L",
+    "courseName": "Engineering Design and Communication",
+    "courseDescription": "Students work in a team to learn and apply the engineering design process to solve an open-ended, client-based problem drawn from a community partner. In this class, students learn to apply the engineering design process to meet the needs of a client, iteratively prototype using tools and materials appropriate to the solution, work collaboratively on a team, and communicate the critical steps in the design process in written, oral, and visual formats.",
+    "term": "Fall",
+    "year": "2020"
+  },
+  "EVANTH 330": {
+    "departmentCode": "EVANTH 330",
+    "departmentName": "Evolutionary Anthropology",
+    "courseNumber": "EVANTH 330",
+    "courseName": "Human Evolutionary Physiology",
+    "courseDescription": "In this course we investigate human physiology using a systems-based and evolutionary approach. The primary course objective is to understand how the human body functions and how evolution has shaped our physiology. We also examine how our physiology responds to local environments (diet, climate, stress, etc.) in ways that affect our health and contribute to human diversity. For each system (cardiopulmonary, immune, nervous, digestive, reproductive, musculoskeletal, etc.) we examine the anatomy involved and its integrated physiological functioning.",
+    "term": "Summer",
+    "year": "2022"
+  },
+  "PHIL 150": {
+    "departmentCode": "PHIL",
+    "departmentName": "Philosophy",
+    "courseNumber": "150",
+    "courseName": "Logic",
+    "courseDescription": "The conditions of effective thinking and clear communication. Examination of the basic principles of deductive reasoning.",
+    "term": "Summer",
+    "year": "2022"
+  },
+  "PHYSICS 264L": {
+    "departmentCode": "PHYSICS",
+    "departmentName": "Physics",
+    "courseNumber": "264L",
+    "courseName": "Optics and Modern Physics",
+    "courseDescription": "Third course in sequence for physics and biophysics majors. Introductory treatments of special relativity and quantum mechanics. Topics include: wave mechanics and interference; relativistic kinematics, energy and momentum; the Schrodinger equation and its interpretation; quantum particles in one-dimension; spin; fermions and bosons; the hydrogen spectrum. Applications to crystallography, semiconductors, atomic physics and optics, particle physics, and cosmology.",
+    "term": "Spring",
+    "year": "2023"
   }
 }
