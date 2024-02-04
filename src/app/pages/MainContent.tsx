@@ -19,7 +19,7 @@ export default function MainContent() {
     }
   };
   return (
-    <div className="flex flex-col items-center xl:w-[1500px] lg:w-[1024px] md:w-[768px] w-[500px]">
+    <div className="flex flex-col items-center xl:w-[1500px] lg:w-[1024px] md:w-[768px] w-auto">
       <MainMenu activeItem={activeItem} handleItemSelect={setActiveItem} />
       <div className="flex flex-col items-center">{renderMainContent()}</div>
     </div>

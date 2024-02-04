@@ -13,10 +13,18 @@ export default function OtherPart() {
       imgLink: "https://www.goodreads.com/user/show/144290430-evan",
     },
   };
+  const leetcodeProps: OtherCardProps = {
+    other: {
+      imgSrc: "/otherImages/leetcode.png",
+      imgLink: "https://leetcode.com/eglas27/",
+    },
+  };
+
   return (
-    <div className="flex flex-row md:w-[768px] w-[500px] justify-around">
+    <div className="flex flex-row flex-wrap w-auto justify-around">
       <OtherCard {...jetpunkProps} />
       <OtherCard {...goodreadsProps} />
+      <OtherCard {...leetcodeProps} />
     </div>
   );
 }

@@ -7,7 +7,7 @@ export interface OtherCardProps {
 
 export default function OtherCard({ other }: OtherCardProps) {
   return (
-    <div className="relative w-52 h-52 m-10">
+    <div className="relative w-52 h-52 sm:m-10 my-5 mx-10">
       <a href={other.imgLink}>
         <Image
           src={other.imgSrc}
