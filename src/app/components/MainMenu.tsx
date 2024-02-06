@@ -17,7 +17,10 @@ const MainMenu = (props: {
     { name: "Other" },
   ];
   return (
-    <nav className="flex flex-row flex-wrap justify-around lg:w-[1024px] md:w-[768px] w-auto">
+    <nav
+      id="main-menu"
+      className="flex flex-row flex-wrap justify-around lg:w-[1024px] md:w-[768px] w-auto"
+    >
       {menuItems.map((item) => (
         <div
           key={item.name}
