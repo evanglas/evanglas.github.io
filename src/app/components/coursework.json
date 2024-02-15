@@ -23,8 +23,8 @@
     "courseNumber": "356",
     "courseName": "Computer Network Archiecture",
     "courseDescription": "Introduces students to the fundamentals of computer networks. Focus on layered architecture of the network protocol stack. Case studies drawn from the Internet, combined with practical programming exercises. Concepts include the Internet architecture, HTTP, DNS, P2P, Sockets, TCP/IP, BGP, routing protocols, and wireless/mobile networking and their applications such as how to achieve reliable/secure communications over channels, how to find a good path through a network, how to share network resources among competing entities, how to find an object in the network, and how to build network applications.",
-    "term": "2022",
-    "year": "Fall"
+    "term": "Fall",
+    "year": "2022"
   },
   "COMPSCI 371D": {
     "departmentCode": "COMPSCI",
@@ -324,9 +324,9 @@
     "year": "2020"
   },
   "EVANTH 330": {
-    "departmentCode": "EVANTH 330",
+    "departmentCode": "EVANTH",
     "departmentName": "Evolutionary Anthropology",
-    "courseNumber": "EVANTH 330",
+    "courseNumber": "330",
     "courseName": "Human Evolutionary Physiology",
     "courseDescription": "In this course we investigate human physiology using a systems-based and evolutionary approach. The primary course objective is to understand how the human body functions and how evolution has shaped our physiology. We also examine how our physiology responds to local environments (diet, climate, stress, etc.) in ways that affect our health and contribute to human diversity. For each system (cardiopulmonary, immune, nervous, digestive, reproductive, musculoskeletal, etc.) we examine the anatomy involved and its integrated physiological functioning.",
     "term": "Summer",

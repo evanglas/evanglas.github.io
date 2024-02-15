@@ -1,4 +1,23 @@
 {
+  "profitProphet": {
+    "name": "Profit Prophet",
+    "imagePath": "/projectImages/profitProphet.jpg",
+    "tools": [
+      "React",
+      "Yahoo Finance API",
+      "Tailwind CSS",
+      "PyTorch",
+      "OpenAI API",
+      "AWS Lambda"
+    ],
+    "description": "A data-driven stock prediction game designed to help build interest in the financial markets by interpreting the effect of news headlines on historical stock prices.",
+    "links": {
+      "Website": "https://www.stonk-go-up.tech",
+      "GitHub": "https://github.com/evanglas/hacklytics",
+      "Devfolio": "https://devfolio.co/projects/guess-the-gains-2a96",
+      "Demo": "https://youtu.be/PjLDrr1Q2qI"
+    }
+  },
   "elucidate": {
     "name": "Elucidate Chrome Extension",
     "imagePath": "/projectImages/elucidate.png",
@@ -123,7 +142,7 @@
   },
   "swervePong": {
     "name": "SwervePong Game",
-    "imagePath": "/projectImages/pongPic.png",
+    "imagePath": "/projectImages/pongPic.PNG",
     "tools": ["HTML", "CSS", "JavaScript", "HTML Canvas"],
     "description": "Made a pong game with few additional features using JS, HTML Canvas, and CSS.",
     "links": {

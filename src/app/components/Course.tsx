@@ -1,4 +1,5 @@
 export default interface Course {
+  [key: string]: any; // Index signature for dynamic access to properties
   departmentCode: string;
   departmentName: string;
   courseNumber: string;

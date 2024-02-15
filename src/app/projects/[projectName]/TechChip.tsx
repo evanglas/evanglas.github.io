@@ -11,6 +11,7 @@ import {
   faAws,
   faMicrosoft,
   faChrome,
+  faYahoo,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition, config } from "@fortawesome/fontawesome-svg-core";
@@ -39,6 +40,7 @@ const toolIcons: { [tool: string]: IconDefinition } = {
   PyTorch: faPython,
   "scikit-learn": faPython,
   NLTK: faPython,
+  "Yahoo Finance API": faYahoo,
 };
 
 export default function TechChip({ name }: TechChipProps) {
