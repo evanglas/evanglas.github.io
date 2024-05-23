@@ -1,12 +1,4 @@
-import {
-  faEnvelope,
-  faFile,
-  fas,
-  faHammer,
-  faGlobe,
-  faVideo,
-  faPlay,
-} from "@fortawesome/free-solid-svg-icons";
+import { faFile, faGlobe, faVideo } from "@fortawesome/free-solid-svg-icons";
 import {
   faPython,
   faJava,
@@ -18,7 +10,6 @@ import {
   faJs,
   faGithub,
   faChrome,
-  faSlideshare,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition, config } from "@fortawesome/fontawesome-svg-core";
@@ -41,6 +32,8 @@ const toolIcons: { [tool: string]: IconDefinition } = {
   Demo: faVideo,
   Slides: faFile,
   "Chrome Store": faChrome,
+  "Forecast Evaluation": faFile,
+  Poster: faFile,
 };
 
 interface LinkChipProps {

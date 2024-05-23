@@ -1,4 +1,4 @@
-import { faHammer } from "@fortawesome/free-solid-svg-icons";
+import { faHammer, faDatabase } from "@fortawesome/free-solid-svg-icons";
 import {
   faPython,
   faJava,
@@ -12,6 +12,7 @@ import {
   faMicrosoft,
   faChrome,
   faYahoo,
+  faBootstrap,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition, config } from "@fortawesome/fontawesome-svg-core";
@@ -41,6 +42,10 @@ const toolIcons: { [tool: string]: IconDefinition } = {
   "scikit-learn": faPython,
   NLTK: faPython,
   "Yahoo Finance API": faYahoo,
+  PostgreSQL: faDatabase,
+  Flask: faPython,
+  Bootstrap: faBootstrap,
+  statsmodels: faPython,
 };
 
 export default function TechChip({ name }: TechChipProps) {

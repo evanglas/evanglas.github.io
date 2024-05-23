@@ -1,4 +1,38 @@
 {
+  "forecasting": {
+    "name": "Forecasting Consumer Loans",
+    "imagePath": "/projectImages/forecasting.jpg",
+    "tools": ["statsmodels", "Pandas"],
+    "description": "Built a forecast of aggregate revolving US consumer loans as part of my final project report for my Time Series Econometrics class. Applied data cleaning to raw macroeconomic time series, conducted model selection, and employed multiple exogenous variables to construct a SARIMAX (Seasonal AutoRegressive Integrated Moving Average with eXogenous regressors) model. Later evaluated the model's prediction against the next released data point.",
+    "links": {
+      "Report": "https://nbviewer.org/github/evanglas/forecasting-project/blob/main/Forecasting%20Project%20Report.pdf",
+      "Forecast Evaluation": "https://nbviewer.org/github/evanglas/forecasting-project/blob/main/Forecast%20Evaluation.pdf",
+      "GitHub": "https://github.com/evanglas/forecasting-project/tree/main"
+    }
+  },
+  "vi": {
+    "name": "Variational Inference Project",
+    "imagePath": "/projectImages/vi.jpg",
+    "tools": ["Python", "scikit-learn"],
+    "description": "Wrote a paper detailining the mathematical foundations of variational inference and applied VI to a sample problem on synthetic data. Submitted the report as my final project for my Bayesian Statistics class.",
+    "links": {
+      "Report": "https://nbviewer.org/github/evanglas/variational-inference-project/blob/main/Evan%20Glas%20Final%20Project%20Report.pdf",
+      "Slides": "https://nbviewer.org/github/evanglas/variational-inference-project/blob/main/Presentation.pdf",
+      "Poster": "https://nbviewer.org/github/evanglas/variational-inference-project/blob/main/ECE%20Poster%20Exam%20Poster.pdf",
+      "GitHub": "https://github.com/evanglas/variational-inference-project/tree/main"
+    }
+  },
+  "rainforest": {
+    "name": "Ecommerce Website",
+    "imagePath": "/projectImages/rainforest.jpg",
+    "tools": ["PostgreSQL", "Flask", "Bootstrap"],
+    "description": "Built a full-stack ecommerce website as part of a team final project for my Databases Systems class. Designed a relational database schema, implemented the database in PostgreSQL, and built a web application using Flask and SQLAlchemy. I walk through my main contributions to the project in the first three minutes of the demo video.",
+    "links": {
+      "Demo": "https://www.youtube.com/watch?v=fGKBHQ91TlY",
+      "Report": "https://nbviewer.org/github/evanglas/rainforest/blob/master/Report.pdf",
+      "GitHub": "https://github.com/evanglas/rainforest/tree/master"
+    }
+  },
   "profitProphet": {
     "name": "Profit Prophet",
     "imagePath": "/projectImages/profitProphet.jpg",
