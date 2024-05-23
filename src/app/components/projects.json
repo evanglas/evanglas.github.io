@@ -66,7 +66,7 @@
     }
   },
   "ece684_project": {
-    "name": "Election Outcome Prediction via NLP",
+    "name": "Election Prediction with NLP",
     "imagePath": "/projectImages/ece684_project.png",
     "tools": ["Python", "PyTorch", "scikit-learn", "NLTK", "Pandas"],
     "description": "Built models to predict 2020 county-level election outcomes via Covid-related excerpts from local news. Submitted as final class project for ECE 684, Natural Language Processing.",
@@ -105,7 +105,7 @@
     }
   },
   "customer2": {
-    "name": "Customer Analysis",
+    "name": "RFM Customer Analysis",
     "imagePath": "/projectImages/RFMGraph.jpg",
     "tools": ["Python", "Pandas", "scikit-learn", "Matplotlib"],
     "description": "Conducted customer segmentation (See Presentation), recency, frequency, monetary (RFM) analysis on Online Retail II Dataset. Determined factors strongly associated with high-value customers. Built XGBoost model with 90.8% accuracy, 0.97 AUC, to predict whether customer will make purchase in next 90 days.",
@@ -150,15 +150,6 @@
       "GitHub": "https://github.com/evanglas/Pong"
     }
   },
-  "housing": {
-    "name": "Housing Price Prediction Model",
-    "imagePath": "/projectImages/HousingCorrelations.png",
-    "tools": ["Python", "Pandas", "Matplotlib", "XGBoost"],
-    "description": "Implemented a random forest and XGBoost model to predict housing prices using the Ames Housing Dataset. Completed data cleaning, feature engineering, model tuning to achieve top 10% of submitted work on Kaggle competition.",
-    "links": {
-      "GitHub": "https://github.com/evanglas/House-Price-Prediction/blob/master/eda.ipynb"
-    }
-  },
   "diig": {
     "name": "DIIG Example Deliverable",
     "imagePath": "/projectImages/diig.PNG",
@@ -175,26 +166,6 @@
     "description": "This is a slide deck I presented Spring semester 2021 for a club's onboarding process. I used this deck to present the results of my data analysis on a mock data set of customer histories for a credit card company.",
     "links": {
       "Slides": "https://github.com/evanglas/DIIG-S21-Slides/blob/main/DIIG%20Challenge.pdf"
-    }
-  },
-  "msong": {
-    "name": "ECE 280 MATLAB Song",
-    "imagePath": "/projectImages/msong.PNG",
-    "tools": ["MATLAB"],
-    "description": "This is a song I made in MATLAB for an ECE 280 (Signals and Systems) class project. I recreated the first 40 seconds of \"The Swan\" using only elementary signals and some signal processing",
-    "links": {
-      "GitHub": "https://github.com/evanglas/Class-Projects/tree/master/ECE%20280%20Song"
-    }
-  },
-  "dmos": {
-    "name": "Desmos Dabbles",
-    "imagePath": "/projectImages/Pendulum.PNG",
-    "tools": ["Desmos Graphic Calculator"],
-    "description": "A few interesting Desmos graphs I made",
-    "links": {
-      "Pendulum": "https://www.desmos.com/calculator/mxzbzyi2nv",
-      "Spinning Square": "https://www.desmos.com/calculator/rolnkh9pej",
-      "Electric Field Lines": "https://www.desmos.com/calculator/kuhymoqat2"
     }
   },
   "egr1": {
@@ -214,16 +185,6 @@
     "links": {
       "Website": "https://evanglas.github.io",
       "GitHub": "https://github.com/evanglas/evanglas.github.io"
-    }
-  },
-  "moreMusic": {
-    "name": "MoreMusic Website",
-    "imagePath": "/projectImages/moreMusic.jpg",
-    "tools": ["React", "HTML", "CSS"],
-    "description": "My team and I at HackDuke21 built a website designed to connect instrument donors with underprivledged students. I worked on the frontend which was built with React, HTML, and CSS.",
-    "links": {
-      "Website": "https://moremusic.vercel.app/",
-      "GitHub": "https://github.com/timjang3/hackduke21"
     }
   }
 }

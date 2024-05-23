@@ -21,7 +21,7 @@ export default function CourseCard({ course }: CourseCardProps) {
     <>
       <div
         onClick={openModal}
-        className="rounded-xl w-72 lg:w-80 p-5 border-2 border-black m-5 cursor-pointer hover:bg-emerald-200 hover:bg-opacity-90 transition-all"
+        className="rounded-xl w-72 lg:w-80 p-5 border-2 border-black m-5 cursor-pointer hover:bg-emerald-200 hover:bg-opacity-90 shadow-lg hover:scale-105 hover:shadow-2xl transition-all"
       >
         <div className="text-center text-lg font-bold pb-2">
           {course.departmentCode + " " + course.courseNumber}
