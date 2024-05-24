@@ -33,6 +33,15 @@
       "GitHub": "https://github.com/evanglas/rainforest/tree/master"
     }
   },
+  "datathon": {
+    "name": "Oil Datathon",
+    "imagePath": "/projectImages/datathon.jpg",
+    "tools": ["Python", "Pandas", "scikit-learn"],
+    "description": "Selected to participate in the spring 2024 Citadel Invitation Datathon. Worked in a team to conduct an analysis on the relationship between county-level dependence on the oil/gas industry and various socioeconomic outcomes. Implemented a Generalized Estimation Equations (GEE) model to distinguish a reation between patterns of oil income and long-term county-level income growth. Found a relationship between certian public opinion questions and county-level oil/gas industry dependence after accounting for political partisanship.",
+    "links": {
+      "Report": "/datathon.pdf"
+    }
+  },
   "profitProphet": {
     "name": "Profit Prophet",
     "imagePath": "/projectImages/profitProphet.jpg",
