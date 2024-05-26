@@ -219,15 +219,5 @@
     "links": {
       "Poster": "https://github.com/evanglas/Class-Projects/blob/master/EGR%20101%20Final%20Project/Soiling%20Sensor%20Poster.pdf"
     }
-  },
-  "v1website": {
-    "name": "Legacy Personal Website",
-    "imagePath": "/projectImages/v1website.png",
-    "tools": ["HTML", "CSS", "JavaScript"],
-    "description": "Built my first personal portfolio website using HTML, CSS, and Javascript. Feel free to check out evanglas.com V1!",
-    "links": {
-      "Website": "https://evanglas.github.io",
-      "GitHub": "https://github.com/evanglas/evanglas.github.io"
-    }
   }
 }
