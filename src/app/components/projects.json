@@ -26,7 +26,7 @@
     "name": "Ecommerce Website",
     "imagePath": "/projectImages/rainforest.jpg",
     "tools": ["PostgreSQL", "Flask", "Bootstrap"],
-    "description": "Built a full-stack ecommerce website as part of a team final project for my Databases Systems class. Designed a relational database schema, implemented the database in PostgreSQL, and built a web application using Flask and SQLAlchemy. I walk through my main contributions to the project in the first three minutes of the demo video.",
+    "description": "Built a full-stack ecommerce website as part of a team final project for my Databases Systems class. Designed a relational database schema, implemented the database in PostgreSQL, and built a web application using Flask and SQLAlchemy. I walk through my main contributions to the project in the first three minutes of the demo video linked below.",
     "links": {
       "Demo": "https://www.youtube.com/watch?v=fGKBHQ91TlY",
       "Report": "https://nbviewer.org/github/evanglas/rainforest/blob/master/Report.pdf",
