@@ -3,7 +3,7 @@
     "name": "Definitions Chrome Extension",
     "imagePath": "/projectImages/dictextension.png",
     "tools": ["JavaScript", "HTML", "CSS", "Chrome Extension API"],
-    "description": "Built a Chrome extension that displays a definition when a word is double-clicked. Definition history is viewable by clicking on the extension logo.",
+    "description": "Built a Chrome extension that displays a definition when a word is double-clicked and allows the user to review previously shown definitions.",
     "links": {
       "Chrome Store": "https://chromewebstore.google.com/detail/merriam-webster-double-cl/nclgnaeiijdjnkdbcflpckkiibgkfpkb?authuser=0&hl=en",
       "GitHub": "https://github.com/evanglas/lexicon" 
