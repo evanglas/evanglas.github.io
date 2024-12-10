@@ -71,12 +71,11 @@ export default function Landing() {
           </div>
         </div>
       </div>
-      <div id="about_text" className="px-4 text-left w-full md:pt-4">
-        <hr className="border-2 border-black w-full my-1" />
+      <div id="about_text" className="px-4 text-left w-full md:pt-4 text-lg">
+        <hr className="border-2 border-black w-full my-1 text-xl" />
         I am an MS in Electrical & Computer Engineering (ECE) student and recent
         ECE, CS graduate at Duke University. My professional interests include
-        data science, machine learning, and software engineering. Scroll to
-        learn more about some of my past projects and coursework.
+        quantitative research and software engineering.
         <hr className="border-2 border-black w-full my-1" />
       </div>
     </div>
