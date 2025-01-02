@@ -1,4 +1,14 @@
 {
+  "pyfoodopt": {
+    "name": "Food Optimization",
+    "imagePath": "/projectImages/pyfoodopt.jpg",
+    "tools": ["Python", "Pandas", "PuLP", "Panel"],
+    "description": "Built an application to find a cost-optimal diet that satisfies given nutritional requirements using linear programming. Used the PuLP library to solve the optimization problem and Panel to create a user interface.",
+    "links": {
+      "Website": "https://evanglas-diet-optimizer.hf.space/app",
+      "Code": "https://huggingface.co/spaces/evanglas/Diet-Optimizer/tree/main"
+    }
+  },
   "dictextension": {
     "name": "Definitions Chrome Extension",
     "imagePath": "/projectImages/dictextension.png",
@@ -6,7 +16,7 @@
     "description": "Built a Chrome extension that displays a definition when a word is double-clicked and allows the user to review previously shown definitions.",
     "links": {
       "Chrome Store": "https://chromewebstore.google.com/detail/merriam-webster-double-cl/nclgnaeiijdjnkdbcflpckkiibgkfpkb?authuser=0&hl=en",
-      "GitHub": "https://github.com/evanglas/lexicon" 
+      "GitHub": "https://github.com/evanglas/lexicon"
     }
   },
   "forecasting": {
