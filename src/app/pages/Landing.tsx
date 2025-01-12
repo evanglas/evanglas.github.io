@@ -73,8 +73,8 @@ export default function Landing() {
       </div>
       <div id="about_text" className="px-4 text-left w-full md:pt-4 text-lg">
         <hr className="border-2 border-black w-full my-1 text-xl" />
-        I am recent MS in Electrical & Computer Engineering (ECE) graduate at
-        Duke University. I also hold a BSE in ECE, BS in CS, and minor in math
+        I am a recent MS in Electrical & Computer Engineering (ECE) graduate at
+        Duke University. I previously earned BSE in ECE, BS in CS, and minor in math
         from Duke. My professional interests include quantitative research and
         software engineering.
         <hr className="border-2 border-black w-full my-1" />
