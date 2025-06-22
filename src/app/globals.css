@@ -1,11 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer utilities {
-  .bgc {
-    background-color: aquamarine;
-  }
+a {
+  color: black;
 }
 
 body {
