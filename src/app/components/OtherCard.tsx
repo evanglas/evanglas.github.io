@@ -12,10 +12,8 @@ export default function OtherCard({ other }: OtherCardProps) {
         <Image
           src={other.imgSrc}
           alt="Picture"
-          fill={true}
-          style={{ objectFit: "contain" }}
-          sizes="208px"
-          className="h-full"
+          width={300}
+          height={300}
         />
       </a>
     </div>
