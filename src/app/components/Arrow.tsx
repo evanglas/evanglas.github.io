@@ -1,7 +1,7 @@
 "use client";
 
 import { Link as ScrollLink } from "react-scroll";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export default function Arrow(props: { scrollTo: string }) {
   return (
