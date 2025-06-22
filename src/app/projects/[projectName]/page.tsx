@@ -10,9 +10,9 @@ import LinkChip from "./LinkChip";
 import { Metadata, ResolvingMetadata } from "next";
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     projectName: string;
-  };
+  }>;
 }
 
 interface ProjectData {
@@ -36,23 +36,24 @@ export async function generateMetadata(
   { params }: ProjectPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const id = params.projectName;
+  const { projectName } = await params
 
   return {
-    title: projects[id].name,
-    description: projects[id].description,
+    title: projects[projectName].name,
+    description: projects[projectName].description,
   };
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const id = params.projectName;
-  const path = projects[id].imagePath;
+export default async function ProjectPage({ params }: ProjectPageProps) {
+
+  const { projectName } = await params;
+  const path = projects[projectName].imagePath;
 
   return (
     <div className="p-1">
-      <title>{projects[id].name}</title>
+      <title>{projects[projectName].name}</title>
       <div id="title" className="flex flex-row justify-center p-10">
-        <h1 className="text-5xl">{projects[id].name}</h1>
+        <h1 className="text-5xl">{projects[projectName].name}</h1>
       </div>
       <div id="content-wrapper" className="flex flex-row justify-center">
         <div
@@ -77,16 +78,16 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             className="max-w-[500px] flex flex-col justify-between mx-5"
           >
             <h2 className="text-center text-3xl pb-4">Description</h2>
-            <p className="px-2">{projects[id].description}</p>
+            <p className="px-2">{projects[projectName].description}</p>
             <h2 className="text-center text-3xl py-2">Tools Used</h2>
             <div id="tools" className="flex flex-row flex-wrap">
-              {projects[id].tools.map((tool: string) => (
+              {projects[projectName].tools.map((tool: string) => (
                 <TechChip key={tool} name={tool} />
               ))}
             </div>
             <h2 className="text-center text-3xl py-2">Links</h2>
             <div id="tools" className="flex flex-row flex-wrap justify-around">
-              {Object.entries(projects[id].links).map(([linkName, link]) => (
+              {Object.entries(projects[projectName].links).map(([linkName, link]) => (
                 <a key={linkName} href={link} target="_blank">
                   <LinkChip name={linkName} />
                 </a>

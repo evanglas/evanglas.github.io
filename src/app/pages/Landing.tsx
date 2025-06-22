@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import profile_picture from "public/profile_picture.jpg";
-
 import { faEnvelope, faFile } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,8 +21,10 @@ export default function Landing() {
         <div id="picture" className="rounded-2xl">
           <Image
             title="Picture"
-            src={profile_picture}
+            src="/profile_picture.jpg"
             alt="Profile Picture"
+            width={320}
+            height={320}
             priority={true}
             className="rounded-2xl w-52 md:w-80"
           />
