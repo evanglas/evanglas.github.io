@@ -10,8 +10,15 @@ export default async function BlogPage() {
                 {posts.map((post) => (
                     <div key={post._raw.flattenedPath} className="mb-4">
                         <h2>
-                            <a href={`/blog/${post._raw.flattenedPath}`}>{post.title}</a>
+                            <a className="font-bold" href={`/blog/${post._raw.flattenedPath}`}>{post.title}</a>
                         </h2>
+                        <div>
+                            {post.tags.map((tag) => (
+                                <span key={tag} className="mr-1">
+                                   [ {tag} ]
+                                </span>
+                            ))}
+                        </div>
                         <p>{new Date(post.date).toLocaleDateString()}</p>
                     </div>
                 ))}

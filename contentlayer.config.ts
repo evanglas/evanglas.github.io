@@ -33,7 +33,10 @@ export default makeSource({
     rehypePlugins: [
       rehypeKatex,
       rehypeKatexNoTranslate,
-      [rehypeCitation, { bibliography: "data/bibliography.bib" }],
+      [
+        rehypeCitation,
+        { bibliography: "data/bibliography.bib", linkCitations: true },
+      ],
     ],
   },
 });
