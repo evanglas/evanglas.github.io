@@ -1,8 +1,10 @@
 // contentlayer.config.ts
 import { defineDocumentType, makeSource } from "contentlayer2/source-files";
+import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeKatexNoTranslate from "rehype-katex-notranslate";
+import rehypeCitation from "rehype-citation";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -13,6 +15,7 @@ export const Post = defineDocumentType(() => ({
     date: { type: "date", required: true },
     tags: { type: "list", of: { type: "string" }, default: [] },
     description: { type: "string" },
+    bibliography: { type: "string", default: "data/bibliography.bib" },
   },
   computedFields: {
     url: {
@@ -23,10 +26,14 @@ export const Post = defineDocumentType(() => ({
 }));
 
 export default makeSource({
-  contentDirPath: "blog",
+  contentDirPath: "data/blog",
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex, rehypeKatexNoTranslate],
+    remarkPlugins: [remarkGfm, remarkMath],
+    rehypePlugins: [
+      rehypeKatex,
+      rehypeKatexNoTranslate,
+      [rehypeCitation, { bibliography: "data/bibliography.bib" }],
+    ],
   },
 });

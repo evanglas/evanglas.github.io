@@ -32,8 +32,10 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-scroll": "^1.8.9",
+    "rehype-citation": "^2.3.1",
     "rehype-katex": "^7.0.1",
     "rehype-katex-notranslate": "^1.1.4",
+    "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
     "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"
