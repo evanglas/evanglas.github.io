@@ -47,9 +47,9 @@ export default function BlogPage() {
     return (
         <>
             {/* Fixed title section */}
-            <div className="fixed top-0 2xl:left-64 xl:left-32 lg:left-16 md:left-0 left-0 right-0 bg-white border-b border-gray-200 z-30">
-                <div className="mx-auto px-4 py-4">
-                    <div className="flex items-center gap-6">
+            <div className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-30">
+                <div className="px-4 py-4">
+                    <div className="flex items-center gap-6  2xl:ml-64 xl:ml-32 lg:ml-16 md:ml-0">
                         <h1 className="text-3xl font-bold">Blog</h1>
                         <div className="flex gap-4">
                             <a href="/about" className="text-gray-600 hover:text-gray-800 hover:underline">
