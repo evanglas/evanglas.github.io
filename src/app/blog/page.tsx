@@ -2,6 +2,7 @@
 
 import { allPosts } from 'contentlayer/generated'
 import { useState, useMemo } from 'react'
+import Link from 'next/link'
 
 export default function BlogPage() {
     const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set())
@@ -52,10 +53,10 @@ export default function BlogPage() {
                     <div className="flex items-center gap-6  2xl:ml-64 xl:ml-32 lg:ml-16 md:ml-0">
                         <h1 className="text-3xl font-bold">Blog</h1>
                         <div className="flex gap-4">
-                            <a href="/about" className="text-gray-600 hover:text-gray-800 hover:underline">
+                            <Link href="/" className="text-gray-600 hover:text-gray-800 hover:underline">
                                 about
-                            </a>
-                            <a href="/contact" className="text-gray-600 hover:text-gray-800 hover:underline">
+                            </Link>
+                            <a href="mailto:eglas27@gmail.com" className="text-gray-600 hover:text-gray-800 hover:underline">
                                 contact
                             </a>
                         </div>
@@ -163,12 +164,12 @@ export default function BlogPage() {
                             {filteredPosts.map((post) => (
                                 <article key={post._raw.flattenedPath} className="border-b border-gray-200 pb-8">
                                     <h2 className="text-xl font-medium mb-2">
-                                        <a 
+                                        <Link 
                                             href={`/blog/${post._raw.flattenedPath}`}
                                             className="hover:underline"
                                         >
                                             {post.title}
-                                        </a>
+                                        </Link>
                                     </h2>
                                     
                                     <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">

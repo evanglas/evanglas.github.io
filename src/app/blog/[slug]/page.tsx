@@ -2,6 +2,8 @@ import 'katex/dist/katex.css'
 import { allPosts } from 'contentlayer/generated'
 import { getMDXComponent } from 'next-contentlayer2/hooks'
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
+
 
 export async function generateStaticParams() {
     const posts = allPosts.map((post) => ({
@@ -27,13 +29,13 @@ export default async function Page({ params } : { params: Promise<{slug: string}
                     <div className="flex items-center gap-6 2xl:ml-64 xl:ml-32 lg:ml-16 md:ml-0">
                         <h1 className="text-3xl font-bold">Blog</h1>
                         <div className="flex gap-4">
-                            <a href="/blog" className="text-gray-600 hover:text-gray-800 hover:underline">
+                            <Link href="/blog" className="text-gray-600 hover:text-gray-800 hover:underline">
                                 all posts
-                            </a>
-                            <a href="/about" className="text-gray-600 hover:text-gray-800 hover:underline">
+                            </Link>
+                            <Link href="/" className="text-gray-600 hover:text-gray-800 hover:underline">
                                 about
-                            </a>
-                            <a href="/contact" className="text-gray-600 hover:text-gray-800 hover:underline">
+                            </Link>
+                            <a href="mailto:eglas27@gmail.com" className="text-gray-600 hover:text-gray-800 hover:underline">
                                 contact
                             </a>
                         </div>
@@ -71,12 +73,12 @@ export default async function Page({ params } : { params: Promise<{slug: string}
 
                     {/* Back to blog link */}
                     <div className="mt-12 pt-8 border-t border-gray-200">
-                        <a 
+                        <Link 
                             href="/blog" 
                             className="text-gray-600 hover:text-gray-800 hover:underline"
                         >
                             ← Back to all posts
-                        </a>
+                        </Link>
                     </div>
                 </article>
             </div>
