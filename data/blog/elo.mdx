@@ -1,0 +1,152 @@
+---
+title: The Elo Model
+date: '2025-05-04'
+tags: ['stats', 'math']
+description: An overview of the theory behind the Elo rating system.
+---
+
+This post will be the first in a series describing common rating systems in theory and practice. I first gained interest in the topic of rating systems as a means to predict the outcome of lacrosse games. I had initially planned to write this post mainly in the context of lacrosse data. As I delved deeper into the nuances of various rating systems, I found the theory underpinning such systems merited separate posts.
+
+The series now begins with the Elo rating system.
+
+# Overview
+
+The Elo rating system is a framework to compute the relative strength of participants in zero-sum[^1] two-player games. The namesake and inventor of the model is Arpad Elo, a Hungarian-American physics professor and chess enthusiast. The United States Chess Federation (USCF) appointed Elo in 1960 to chair a committee responsible for reviewing the Federation's active Harkness Rating System. Elo formulated a new rating system distinguished by its roots in statistical first principles. In addition to a strong theoretical foundation, the Elo model is intuitive and easily computed (even with paper and pencil, to an approximation). The USCF adopted Elo's system in 1960, while numerous other chess federations adopted close variants in subsequent years. Outside chess, sporting/game organizations have notably adapted the model, and the Elo system has since served as an inspiration to an array of new, more sophisticated rating frameworks.
+
+# Mathematical Formulation
+
+Elo outlines his model in the 1978 book _The Rating of Chess Players, Past and Present_ [@Elo1978]. He writes that, by 1959, the prevailing chess rating systems lacked strong theoretical justification. The chess community nevertheless accepted such systems because they "generally agreed with the personal estimates made by knowledgeable chess players". Such systems could suffer from implicit human biases without grounds in mathematical theory. In 1959, Elo set out to develop a new model based on statistics and probability.
+
+Before I derive the Elo Rating System, it is worth noting that many variants exist today. Even sources I have read on the base "Elo Rating System" present a modified version in which the performance distribution function is logistic rather than normal. The below formulation builds directly from Elo's work in _The Rating of Chess Players, Past and Present_.
+
+## Assumptions
+
+Elo's rating system rests on two key assumptions. These assumptions do not reflect reality, although they facilitate the development of an elegant model.
+
+1. Player performance follows a normal distribution centered about the player's true skill rating.
+   1. This assumption may be taken to be _approximately_ true for most cases, although real-world data, such as chess results, tends to have greater probabilities of "tail" events. Elo discusses the logistic distribution as an alternative that addresses this problem.
+2. All players have the same performance variance.
+   1. This is also unlikely to hold (e.g., players with more conservative tactics may have more consistent performances). I would assume large samples would help to remedy violations of this assumption.
+
+Violations of either assumption would negatively affect our ability to adjust ratings accurately. Without a way to measure the probability of a given competition outcome, we lose the ability to pinpoint player's "true" skill levels.
+
+## Formulation
+
+We first define $r_i$, the Elo rating of player $i$. Given $r_i$, we assume a player's performance score, $P_i$, follows a normal distribution about $R_r$ with standard deviation $\sigma$. $\sigma$ is a free parameter in our model that designates the spread of ratings. Elo chose to use $\sigma=200$ to align with the preeminent chess rating systems of the time.
+
+$$
+P_i\sim N(R_i,\sigma)\tag{1}
+$$
+
+Suppose player $i$ participates in a closed competition where the average Elo rating is $\bar{r}$. Player $i$ participates in $N$ games, of which they win $w_i$, tie $t_i$, and lose $\ell_i$. We map these performances to numeric quantities: $w=1, t=0.5, \ell=0$. Our task is to map the player's original rating, $r_i$, to their updated rating, $r'_i$.
+
+To answer whether $r'_i$ should be higher or lower than $r_i$, and by how much, we need first to answer how we _expect_ player $i$ to perform in this above competition. We will start by examining how player $i$ should perform in a single game. Suppose player $i$ faces player $j$ with Elo rating $r_j$. We say player $i$ wins if the performance score of player $i$ is greater than that of player $j$. In other words, player $i$ wins if $P_i > P_j \iff P_i - P_j >0$.
+
+Since $P_i$ and $P_j$ both follow normal distributions, we know $P_i - P_j \sim N(r_i - r_j, \sqrt{\sigma^2+\sigma^2})=N(r_i-r_j,\sigma \sqrt{2})$. We will define a new random variable to be this difference in performance scores, $D_{ij}=P_i-P_j$. Define $F_{D_{ij}}$ to be the cumulative distribution function of $D_{ij}$. Now, the probability player $i$ wins is $\mathbb{P}(D_{ij}<0)=1-F_{D_{ij}}(0)$. We will define this quantity as the expected score of player $i$, $S^E_i$. In our discussion below, we will discuss $S^E_i$ under the assumption player $i$'s opponents have average rating $r_C$.
+
+![Distributions](/static/images/elo/player_elos.png)
+
+In $N$ games where the average opponent has rating $r_C$, we expect player $i$ to win $N*S^E_i$ games[^2]. Player $i$'s expected win percentage is $S^E_i$. Finally, to adjust player $i$'s rating, we must determine the "most likely" rating of player $i$ given their expected score and realized score.
+
+Suppose player $i$ has a realized win percentage of $S'_i$. Given our model of normally distributed performance, we seek to find the appropriate rating such that $\mathbb{P}(D_{ic}>0)=S'_i$ holds.
+
+$$
+\mathbb{P}(D_{ic}>0)=S'_i\implies S'_i=1-F_{D_{iC}}(0)
+$$
+
+$$
+\implies F_{D_{iC}}(0)=1-S'_i
+$$
+
+Now, parameterize $r_i=r_c+d$. Then, we have $D_{ic}\sim N(d, \sigma \sqrt 2)$. It follows that $F^{-1}_{D_{ic}}(x)=F^{-1}_{D_{cc}}(x)+d$, where $F^{-1}_{D_{cc}}$ denotes the inverse cumulative distribution function for a competition between two players, both with rating $c$. Stated explicitly, $F^{-1}_{D_{cc}}$ is the inverse CDF of the distribution $N(0, \sigma \sqrt 2)$. Plugging in $1-S'_i$, we have $F^{-1}_{D_{cc}}(1-S'_i)+d=0$. Our ratings difference then follows:
+
+$$
+d=-F^{-1}_{D_{CC}}(1-S'_i)=F^{-1}_{D_{CC}}(S'_i)=N(0, \sigma \sqrt 2).\text{inverseCDF}(1-S'_i) \tag{2}
+$$
+
+## Problems
+
+Three immediate problems arise from the above formula for $d$.
+
+1. This formula is undefined when $S'_i=0$ or $S'_i=1$. Under our model, there should always be overlap in the performance distributions of two players, meaning it should be impossible for a player to win or lose all of their games in the long run.
+2. Given the above problem, this formula makes little sense for small sample sizes. If we only have one game in our sample, then $S'_i$ would always be 0 or 1.
+3. This formula does not effectively account for the evolution of player's rating over time. Since the model averages over _all_ games, it would be slow to reflect a sudden change in a player's skill rating in more recent games.
+
+Elo's model veers slightly from the realm of theory to subjectivity in its solution to these problems. Elo applies a linear approximation of the inverse normal CDF to address problems 1 and 2, and a heuristic to address problem 3.
+
+## Problem Solutions
+
+1. Elo notes the slope of the inverse normal CDF function is approximately linear near 0.5. Assuming we expect most realized win percentages to exist close to 0.5, we can approximate the inverse normal CDF with a linear function without loss of substantial accuracy. Elo approximates the slope as $4\sigma$. The exact value is closer to $3.5\sigma$.
+   1. We can then say $d=F^{-1}_{D_{CC}}(S'_i)\approx 4\sigma (S'_i-0.5)$. This approximation holds very well until $S'_i$ goes below 0.05 or above 0.95.
+2. We can safely plug in $S'_i=1$ or $S'_i=0$ to the above linear approximation formula. In doing so, we compromise on theoretical soundness to preserve tractability. If our sample size is 1 game, we would adjust player $i$'s Elo rating by $\pm 4\sigma /2$.
+3. Elo presents a method to combine a player's past skill rating with their skill rating from a recent competition (see Modeling Elo Rating Evolution below). Over multiple iterations, Elo's proposal effectively applies an exponentially decreasing weight to past competitions.
+
+## Modeling Elo Rating Evolution
+
+Suppose player $i$ has an initial rating of $r_0$ computed over $N_0$ games. Suppose player $i$ now earns a skill rating of $r_1$ in a competition with $N_1$ games. How should we compute player $i$'s current rating if we believe the most recent competition is a more accurate reflection of their current skill?
+
+Elo propose the following formula, where $r_i$ is player $i$'s new updated rating:
+
+$$
+r_i=\frac{(N_0-N_1)r_0 + N_1 r_1}{N_0} \tag{3}
+$$
+
+This formula takes a weighted average of $r_0$ and $r_1$, with $r_1$ receiving a proportionally larger weighting relative to number of games played. This formula is ill-defined if $N_1$ is greater than $N_0$.
+
+## Bringing it All Together
+
+We can combine Elo's linear approximation of the inverse normal CDF and the above rating evolution formula to derive Elo's originally proposed rating update formula in terms of player $i$'s win percentages. Let $d^*=r_i-r_0$ be the rating change before/after the competition discussed above.
+
+$$
+(3)\implies d^*=\frac{N_1}{N_0}(r_1-r_0)
+$$
+
+Let $r_{c0}$ and $r_{c1}$ be the average opponent ratings for all games before and during the new competition, respectively. Likewise, let $d_0$ and $d_1$ be the rating updates computed via Equation (2).
+
+$$
+\implies d^*=\frac{N_1}{N_0}((r_{c0}+d_0)-(r_{c1}+d_1))
+$$
+
+$$
+=\frac{N_1}{N_0}(d_0-(d_1+r_{c1}-r_{c0}))
+$$
+
+Now, $d_0$ and $(d_1+r_{c1}-r_{c0})$ effectively represent the ratings differences we would have computed mapped to the original "$r_{c0}$" scale. We will express this equation in terms of respective win probabilities, also on the "$r_{c0}$" scale.
+
+$$
+=\frac{N_1}{N_0}(F^{-1}_{c0}(1-S_0)-F^{-1}_{c0}(1-S'_1))
+$$
+
+Above, $1-S'_1=F_{c0}(d_1+r_{c1}-r_{c0})$.
+
+Finally, we apply Elo's linear approximation of the inverse normal CDF.
+
+$$
+\approx \frac{N_1}{N_0}*4\sigma(S'_1-S_0) \tag{4}
+$$
+
+Equation 4 is more complicated than Elo's update formula. For simplicity, Elo only provides a model where we assume the average competition ratings are equal so that $r_{c1}=r_{c0}$. Under Elo's framework, we can use the realized win rate across the $N_1$ games without applying a scaling adjustment:
+
+$$
+d^*\approx \frac{N_1}{N_0}*4\sigma (S_1-S_0) \tag{5}
+$$
+
+Equation (5) offers an elegant interpretation. Since the average rating is the same across both pools, we can interpret $S_0$ to be the expected win rate in player $i$'s most recent competition. We can then express $d^*$ in terms of the expected number of wins, $W_E=N_1*S_0$ versus the realized number of wins, $W_1=N_1*S_1$:
+
+$$
+d^*=\frac{4\sigma}{N_0}(W_1-W_E)=K(W_1-W_E) \tag{6}
+$$
+
+Above, $K=\frac{4\sigma}{N_0}$. We can modulate $K$ to provide more or less weight to recent competitions.
+
+# Conclusion
+
+This post has provided a rundown of the Elo model following Elo's original derivation (with some additional formulations/explanations). Ultimately, the Elo rating system only simplifies to the elegant Equation (6) after we "fudge" the theoretical basis of the model. In this sense, I do not view this model as following directly from probabilistic theory, despite Elo's stated ambition when developing the system. The Elo model is more akin to stochastic gradient descent towards more accurate skill ratings. When one substitutes the distribution function with the logistic distribution, the Elo model closely resembles logistic regression. I will demonstrate this in a subsequent post.
+
+# Bibliography
+
+[^ref]
+
+[^1]: Zero-gum games are those in which the results for all participants "sum" to zero. Consider a lacrosse game with possible outcomes "win", "tie", and "loss". If, for each team, we assign the values 1, 0, and -1 to "win", "tie", and "loss", respectively, this would qualify as a zero-sum game. As a counter-example, if we allow the possibility for the above lacrosse game to have two winners, this would not be a zero-sum game.
+
+[^2]: This statement is not generally true. If player $i$'s opponents demonstrate variability in their skills ratings, player $i$'s expected wins would not necessarily equal $N*S^E_i$. Elo appeals to the Central Limit Theorem to justify this approximation in the limit; however, without further assumptions on the distribution of player skills ratings, Elo's argument is insufficient. Suppose the _performance_ standard deviation (not the skill rating standard deviation) of all players, $\sigma$, is 1. Suppose player $i$ with rating 5 faces three opponents with rating 0 and 1 opponent with rating 20. The average rating of player $i$'s opponents is 5, yet player $i$'s expected win percentage is much closer to 3/4 than 2/4. If this sample is representative of the population of possible opponents, this setup would contradict the expected win percentage, $S^E_i\approx0.5$, computed using the average opponent rating 5.
