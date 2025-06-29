@@ -1,0 +1,106 @@
+---
+title: Logistic Regression and the Elo Model
+date: '2025-05-05'
+tags: ['stats', 'math']
+description: The relationship between the Elo model and logistic regression
+bibliography: references-data.bib
+---
+
+In this post, I discuss the use of the logistic distribution in the Elo Model. I cover the theory motivating this choice of distribution function and build a comparison with logistic regression. This is the second post in a series on rating systems.
+
+# Elo Model Refresher
+
+In my last post, I introduced the base Elo model. As mentioned, the Elo model is compatible with any choice of distribution to model a player's performance given their skill rating. Elo chooses to use the normal distribution in the original iteration of the model. Elo offers multiple citations to justify using the normal distribution [@Elo1978, page 7]. Elo nevertheless includes a thorough discussion of alternative distribution functions, of which Elo devotes the most attention to the logistic distribution[^1]. The logistic distribution is visually similar to the normal distribution with notably "fatter" tails (see the below graphical comparison). Elo does not, however, use the logistic distribution to model player performance directly; Elo models the _difference_ in player performance distributions $D_{ij}$ (see below) as logistic. Elo refers to this concept as the performance expectancy curve.
+
+## Aside: Important Notation in the Elo Model
+
+We will apply the same mathematical notation as the preceding post.
+
+1. Performance distribution function (we define this now as $f_i$): models the distribution of player $i$'s performance score, $P_i$, given their skill rating, $r_i$, and standard deviation of performance, $\sigma$.
+   1. $P_i\sim f_i(p_i;r_i,\sigma)$
+2. Difference of performances (a random variable, $D_{ij}$): the result of subtracting one player $j$'s performance distribution from player $i$'s performance distribution. We will define the distribution of $D_{ij}$ as $f_D$. Models the outcome of a single game. The probability of player $j$ beating player $i$ is the cumulative area under this curve to the left of the $y$ axis. 2. $D_{ij}=P_i-P_j\sim f_D(D_{ij})$ 3. For the Elo model with a normal performance distribution, $D_{ij}\sim N(r_i-r_j,\sigma\sqrt2)$.
+3. Performance expectancy curve $F_D$: the CDF of the difference of performance distributions. The $y$ intercept of this curve gives the probability player $j$ beats player $i$.
+   1. $F_{D_{ij}}=\text{CDF}(f_{D_{ij}})$
+   2. $F_{D_{ij}}(0)=\mathbb{P}(\text{player } j \text{ beats player }i)$
+
+For the original Elo model, the performance expectancy curve follows a normal CDF. This implies that player performance follows a normal distribution (since the convolution of two normal distributions is again normal). In the case where the performance expectancy curve is a logistic function, we know the distribution of the difference in player performances follows a logistic distribution. This model implies the player performance distributions then have even fatter tails than the logistic distribution, as the convolution of two player performance distributions must be logistic.
+
+![NormalVLogistic](/blog/images/elo_logistic/normal_vs_logistic.png)
+
+# Motivation for Using the Logistic Distribution in The Elo Model
+
+Elo models $F_D$ as logistic as an alternative to the original model where $f_D$ is normal. In this setup, $F_D\sim \text{logistic}(D)=\frac{1}{1+e^{-D/s}}$. $s$ is the scale parameter. $s$ is a free parameter that determines the spread of player performance ratings. $s$ is analogous to $\sigma$ in the Elo model with normal performance score distributions.
+
+We know player $j$ beats player $i$ if $P_i< P_j$. It follows that $\mathbb{P}(p_i<p_j)=\mathbb{P}(p_i-p_j<0)=\mathbb{P}(D_{ij}<0)=F_{D_{ij}}(0)$.
+
+This formulation arises if we assume the _log odds ratio_ of player $i$ beating player $j$ is equivalent to the difference in their performance ratings, $r_i-r_j:=\delta_{ij}$ [@Elo1978, page 145]. Let $s_{ij}$ represent the probability player $i$ beats player $j$. The odds ratio that player $i$ wins the game is $s_{ij}/s_{ji}$. The log odds ratio is as follows:
+
+$$
+ln(s_{ij}/s_{ji})\tag{1}
+$$
+
+We are thus saying $ln(s_{ij}/s_{ji})=r_i-r_j=\delta_{ij}$. Since $s_{ji}=1-s_{ij}$, $ln(s_{ij}/(1-s_{ij}))=\delta_{ij}$. Exponentiating then solving for $s_{ij}$ gives the following:
+
+$$
+s_{ij}=\frac{1}{1+e^\delta}\tag{2}
+$$
+
+This equation matches the form of $F_D$, as required. We can incorporate the scale parameter, $s$, to increase or decrease the distance between skill ratings. If we suppose $ln(s_{ij}/s_{ji})=s(r_i-r_j)=\delta_{ij}$, then Equation (2) becomes
+
+$$
+s_{ij}=\frac{1}{1+e^{\delta/s}}\tag{2.1}
+$$
+
+A nice corollary of Equation (2) is the following result:
+
+$$
+\frac{s_{ik}}{s_{ki}}=\frac{s_{ij}}{s_{ji}}\frac{s_{jk}}{s_{kj}} \tag{3}
+$$
+
+Equation (3) says that one may multiply the odds ratios for games $(i,j)$ and $(j,k)$ to attain the odds ratio for game $(i,k)$. As a numerical example, if player $i$ has 3:1 odds against player $j$ and player $j$ has 1:2 odds against player $k$, player $i$ would have 3:2 odds against player $k$. Equation (1) is undefined if any win probability is 1. In "log" terms, we have
+
+$$
+ln(s_{ik}/s_{ki})=\delta_{ik}=\delta_{ij}+\delta_{jk}
+$$
+
+## Update Rule
+
+We recover the logistic regression update step if we apply the same rating update methodology as in the prior post. Stated again, the rating update, $\delta$ for a player with initial rating $r_0$ is as follows (see Equation (4) in the prior post):
+
+$$
+=\frac{N_1}{N_0}(F^{-1}_{c0}(1-s_0)-F^{-1}_{c0}(1-s'_1))
+$$
+
+We can apply a linear approximation of $F^{-1}$ in the same way as before so that the update is linear in terms of $s_1$ (see Equation (6) in the last post). This time, the linear approximation of $F_D$ about $s_i=0.5$ has a slope of $4*s$, where s is the scale parameter. This gives an update step of the same form as Equation (7) in the last post:
+
+$$
+\delta=\frac{4s}{N_0}(W_1-W_E)=K(W_1-W_E)\tag{4}
+$$
+
+This is the same update step we would derive if we sought to minimize the cross-entropy loss of our model. <a href="https://en.wikipedia.org/wiki/Elo_rating_system#Formal_derivation_for_win/loss_games">This</a> Wikipedia section shows this point nicely.
+
+**The grand takeaway of this post is that we can interpret the Elo model as stochastic gradient descent.** After a game between players $i$ and $j$, we update $r_i$ and $r_j$, the "model weights", given our update step size $K$. In doing so, we minimize the cross-entropy loss of the model's predicted win probability, $W_E$ and the realized win probability $W_1$.
+
+## Logistic Regression
+
+We can do better. We can update _all_ player ratings after each game (rather than just two player ratings) by applying the framework of logistic regression. Consider the following model for the player $i$'s win probability in a game against $j$:
+
+$$
+\hat{s}_{ij}=\sigma_s\left(\sum_{k=1}^{M}\mathbb{1}_{k=i}*(-\mathbb{1}_{k-j})*r_k\right)\tag{5}
+$$
+
+This is a logistic regression model where we loop over all the ratings, $r_k$, of all $M$ players in a pool. Above, $\sigma$ represents the sigmoid function with scale parameter $s$. This model employs two indicator variables. The first indicator variable includes the value of $r_i$ in the summation. The second indicator variable includes the value of $-r_j$ in the summation. All other $r_{k\neq i,j}$ are excluded from the sum. For a given game, this model simplifies to $\hat{s}_{ij}=\sigma_s(r_i-r_j)$, as consistent with the Elo model with a logistic performance expectancy curve.
+
+Suppose we have a sample of $N$ games among pairs of $M$ players. Our goal is for our predicted game win probabilities, the $\hat{s}_n$, to reflect the true outcomes, $s_n\in{0,1}$ ($0$ for a loss and $1$ for a win). We can also use $s=0.5$ to accommodate ties.
+
+When we apply the <a href="https://en.wikipedia.org/wiki/Logistic_regression#Fit">cross-entropy loss</a>, we derive the same update rule as Equation (5) (besides a step size parameter of our choosing) for each game in our sample. **The logistic regression model would, in fact, be identical to our Elo model if we limit fitting to one iteration over the data.** The improvement from logistic regression comes from our ability to update model weights (the $r_k$) as we loop over the sample multiple times. This approach would be identical to a hypothetical scenario where we apply an Elo model to the same data set of $n$ games multiple times.
+
+Unless our logistic regression model converges within 1 pass over the data (extremely unlikely), we gain substantial data-fitting power over the Elo model. We can take one step further by weighting our dataset depending on the recency of each game in our sample. As time goes on and we expand our data set, older games will naturally lose importance relative to newer games.
+
+# Conclusion
+
+This post has explored the use of the logistic distribution in the Elo rating system. The logistic distribution can present an improvement to the original Elo model (which uses normal distributions) in its ability to capture tail events. Finally, we showed that the logistic version of the Elo model is a special case of logistic regression.
+
+My next post outlines the application of the Elo model to historical NCAA lacrosse data.
+
+[^1]: Elo refers to the logistic distribution as the Verhulst distribution in [@Elo1978].

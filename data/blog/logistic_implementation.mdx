@@ -1,0 +1,84 @@
+---
+title: Extending Elo with the Logistic Regression Model
+date: '2025-05-22'
+tags: ['stats', 'math']
+description: Formalizing Elo's stochastic gradient descent with a logistic regression model
+bibliography: references-data.bib
+---
+
+In this post, I will implement a logistic regression model to generate team skill ratings. As discussed in <a href="/blog/elo_logistic">a previous post</a>, one may view the Elo model as a simplification of a logistic regression model. The team skill ratings act as the model weights. At each game, an Elo model performs stochastic gradient descent by increasing the winner's rating and decreasing the loser's rating. We may extend this framework by instead running a full logistic regression after each game[^1]. <a href="/blog/elo_logistic">The same post</a> outlines how we may construct a score function for any given game by taking a sum over all weights multiplied by (1/-1) for the teams in play and 0 for all other teams and then applying a sigmoid function.
+
+# Motivation
+
+There exist several advantages of a logistic regression model over the Elo model.
+
+1. Information sharing: A logistic regression model fits all skill ratings jointly, rather than updating two ratings at a time. This allows us to share information from one game to the skill ratings of all teams, as the model seeks to minimize the loss function over the entire training set. Now, the model will update ratings for teams even in between their games as it gains a better understanding of the other teams in the pool.
+
+2. Regularization: We may penalize extreme ratings by applying regularization to the loss function. This can be useful to our case as teams may achieve extremely high Elo ratings that might not reflect reality if, for instance, they have extended win streaks.
+
+3. Inclusion of additional features: In addition to skill ratings, we may include other elements of games into our score function. For example, I test the inclusion of a binary variable corresponding to whether a game is an away game.
+
+4. Sample weighting: We may explicitly adjust the sample weights across games in our sample. In my implementation, I apply exponentially decreasing weight to games according to the number of days from the present. The Elo model considers historical performance as well (implicitly), but now we may fine-tune the extent to which historical results influence present ratings.
+
+# Implementation
+
+My dataset consisted of over 35,000 college lacrosse games from 2011 to 2024 spanning all three divisions. I excluded the games that concluded in ties so that I could model this as a binary prediction problem compatible with a logistic regression. I identified the teams in the dataset via an ID consisting of a school ID and the team's division in a given year. This way, I could avoid issues that could arise if a team changed divisions and maintained their old skill rating. Now, if a team joined a new division, that team would essentially start fresh.
+
+I created a matrix of dummy variables. Each row represented a single game. Each column represented a team. Each row had a 1 and -1 to represent the opposing teams. This matrix would act as the input features for the model. The target variable was the result of each game (from the perspective of the team assigned a 1). That is, if the team assigned a 1 won the game, the target variable would be 1. Otherwise, it would be 0.
+
+My general training scheme was as follows:
+
+1. Group all games in the dataset according to their date. Each group of games on a given date would act as an indivisible chunk when training the model.
+2. Train the model on all game days except the first 100. I used the first 100 as a "warm up" period for the model. Otherwise, if I were to train the model without any additional information on just, for instance, the first game day, it may produce odd initial values.
+3. For each successive game day, retrain the model on a rolling window of about 3 years from the current game day. I applied an exponentially decreasing weighting scheme to the games in the training window according to the number of days from the present game day.
+
+I computed the model's prediction by applying the logistic score function to the sum of the model weights shifted by one game day multiplied by the dummy variable matrix.
+
+I did not implement a formal hyperparameter selection process, although I did experiment with different choices of sample weight exponential decay value, rolling training window size, and regularization magnitude (l2 regularization).
+
+# Results
+
+The best combination of hyperparameters I found achieved about an 80% accuracy on post-2015 data. This was surprising, as it was extremely similar to the accuracy of the Elo model. I would have suspected to see at least some clear improvement. I will outline three interesting findings in the results:
+
+## Home Field advantage
+
+In my model, the site of the game matters little towards predicting the outcome. I included an additional variable to the dummy variable training features corresponding to the site of the game. Away games were assigned -1, neutral-site games 0, and home games 1. This model achieved an accuracy of about 79.8%, compared to 79.6% for a model with otherwise identical hyperparameters. I cannot say if this result is significant with certainty. Nevertheless, the model weight applied to the "site" variable was consistently positive throughout the entire training set, suggesting there may be a slight home-field advantage in college lacrosse.
+
+![Coefficient on Site Variable](/blog/images/logistic_implementation/site_coefficient.png)
+
+## Model Calibration
+
+I was able to fine-tune the model's calibration by adjusting the regularization weight parameter, C. As shown in the below series of plots, the model became increasingly conservative in its predictions as the regularization weight increased. That is, as the regularization weight increased, the model tended to undershoot the winning team's odds of winning and overshoot the losing team's probability of losing. This makes sense, as the unregularized model would not face a penalty for likely overfitting the training data via extreme weights. This likely explains why the unregularized model was "overconfident" in its predictions vs reality. In the below plots, a higher value of C corresponds to a lower regularization weight.
+
+<div className="-mx-2 flex flex-wrap overflow-hidden xl:-mx-2">
+  {' '}
+  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
+    ![Calibration 1](/blog/images/logistic_implementation/cal_no_reg.png){' '}
+  </div>{' '}
+  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
+    ![Calibration 2](/blog/images/logistic_implementation/cal_10.png){' '}
+  </div>{' '}
+  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
+    ![Calibration 3](/blog/images/logistic_implementation/cal_2.png){' '}
+  </div>{' '}
+  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
+    ![Calibration 4](/blog/images/logistic_implementation/cal_1.png){' '}
+  </div>
+</div>
+
+## Comparison with Elo
+
+The Elo model tracks the logistic regression results extremely closely. I graphed Duke's 2024 season ratings from the logistic regression and Elo model below. As the Elo model relied solely on games in which Duke played to update Duke's rating, it appears as a crude series of large jumps compared to the logistic regression coefficients. However, The Elo model nevertheless tracks the logistic regression output relatively well. I would suspect the logistic regression output may have a slightly smaller loss, however, as both models are well-calibrated with similar accuracies, I would not expect a large difference.
+
+![Duke 2024 Ratings](/blog/images/logistic_implementation/duke2024.png)
+
+# Conclusion
+
+Despite the advantages of the logistic regression model, I have yet to achieve a substantial performance boost compared to a standard Elo model. I suspect I had this result for a couple of reasons:
+
+1. Lacrosse data is noisy. There is extensive randomness in lacrosse games, and perhaps the logistic regression fails to capture additional signals in the historical game data.
+2. Lacrosse teams do not play that many games in a season. Perhaps the logistic model would perform better if it could leverage a larger intra-season dataset. Otherwise, it may simply overfit to a small set of games with little informational value.
+
+I think it would be possible to build a better win probability model by incorporating additional features, such as score differential, team statistics, and player statistics. For now, I think a linear model is likely still best suited for the task given the small quantity of data available. As a next step, I intend to implement a linear mixed-effects model.
+
+[^1]: I instead ran my model after each game day to avoid lookahead bias. My dataset does not contain exact game times, so if I were to run the model after each game, I would potentially update ratings using games that had not yet occurred. This would present a problem when interpreting the model's predictions.

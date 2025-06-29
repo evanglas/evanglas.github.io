@@ -1,0 +1,113 @@
+---
+title: Home-Field Advantage in Men's College Lacrosse
+date: '2025-05-26'
+tags: ['stats', 'math']
+description: Exploring the existence and significance of home field advantage in men's college lacrosse
+bibliography: references-data.bib
+---
+
+In this post, I will investigate the concept of home-field advantage in men's college lacrosse. I find that the game's location is a statistically significant predictor of game outcome.
+
+# Motivation
+
+Home-field advantage is a well-documented phenomenon in sports. Empirically, home teams tend to perform better across many metrics of success. This makes intuitive sense. Home field privileges offer a friendly stadium atmosphere, minimal travel fatigue, and the familiarity of a known environment. At first glance, it seems like the home team has a significant advantage in college lacrosse games. In my dataset, from the 2011-2024 seasons, home teams won about 57.1% of games (compared to 42.9% for away teams).
+
+![Home Team Win Percentage](/blog/images/home_field_advantage/home_vs_away_win_pct.png)
+
+To be more rigorous, we can test the hypothesis that playing at home has a statistically significant relationship with game outcomes. If we model the outcome of a game as a Bernoulli($p$) random variable (such that $p$ is the probability of the home team winning), we may test the null hypothesis that $p = 0.5$ via a one-tailed binomial test.
+
+$$
+H_0: p \leq 0.5 \\
+H_1: p > 0.5
+$$
+
+Over 34401 games, the home team won 19664 times. If we approximate this distribution as normal, we would expect a standard deviation of about 83 games over 34401 total. Upon conducting an exact computation of the p-value, I obtained approximately 0. We would reject the null hypothesis under almost any significance level.
+
+However, I do not believe this result offers a full picture of home-field advantage in college lacrosse. When I included the site of the game as a feature in a logistic regression to predict game outcome, I found that it offered little predictive power beyond the base model. This was surprising, as the historical home-team win percentage would appear to suggest a strong advantage to the home team. However, it is wrong to assume a causal relationship between playing at home and the outcome of the game. The home-field win percentage surely reflects a statistically significant _association_, however, without further analysis, we cannot demonstrate that playing at home _causes_ a team to win more often. Perhaps there are confounding factors that explain the home team's win percentage.
+
+For instance, what if better teams simply play more home games? This could make intuitive sense. In playoffs, the highest-seeded teams may receive home-field advantage. Maybe established programs play more home games than newer programs. I could test this hypothesis via the team ratings I generated in <a href="/blog/logistic_implementation">this previous post</a>.
+
+In my data, home teams enter the game with a better rating about **54.5%** of the time. Further, home teams also have a higher average entering rating of about 0.227 points. In the logistic regression framework, this would correspond to a $1 / (1 + e^{-0.227})$ chance of winning, or about 55.7%.
+
+Thus, it appears home team may generally be better than away teams. We may no longer attribute the difference in win percentage to home-field advantage alone. I will instead turn to regression to find an estimate of the _ceteris paribus_ (holding all else equal) effect of home-field advantage on game outcome.
+
+# Analysis
+
+I will employ a logit regression to model the probability of a home team winning the game. A logit regression models the response variable (in this case the game outcome) using a logistic function applied to a linear combination of the input features. As there is not a linear relationship between the input variables and response variable, we cannot derive a simple linear cause-and-effect relationship. However, we can find the effect of adjusting a given feature on the response variable for a given level of the remaining variables. We can find the marginal effect by taking the partial derivative of the logistic function with respect to the feature of interest. We can also manually input values of a feature of interest while keeping the remaining features constant to evaluate the difference of the response variable at two precise levels.
+
+The logit regression is a nice alternative to a linear probability model as we may interpret the output as a "probability". The logit model can only output numbers in a range of 0 to 1. Similar to a linear probability model, however, we may also derive confidence intervals for the model parameters that are valid asymptotically. See [@Wool2013, chapter 17] for a full description.
+
+My model will just include two features: the pregame rating difference between team 1 and team 2, and a binary variable indicating whether team 1 is playing at home.
+
+$$
+P(Win) = \sigma(\beta_1 \cdot rating_diff + \beta_2 \cdot site_var)
+$$
+
+Where $\sigma(x) = 1 / (1 + e^{-x})$ is the logistic function and site_var is 1 for a win and -1 for a loss. The model parameters $\beta_1$ and $\beta_2$ are estimated via maximum likelihood estimation.
+
+I will use the `statsmodels` library in Python to estimate the model parameters.
+
+```
+                         Results: Logit
+=================================================================
+Model:              Logit            Method:           MLE
+Dependent Variable: result_num       Pseudo R-squared: 0.396
+Date:               2025-05-27 21:27 AIC:              27125.2315
+No. Observations:   32393            BIC:              27142.0028
+Df Model:           1                Log-Likelihood:   -13561.
+Df Residuals:       32391            LL-Null:          -22453.
+Converged:          1.0000           LLR p-value:      0.0000
+No. Iterations:     7.0000           Scale:            1.0000
+------------------------------------------------------------------
+                 Coef.   Std.Err.     z     P>|z|   [0.025  0.975]
+------------------------------------------------------------------
+rating_diff      0.9607    0.0109  88.0358  0.0000  0.9393  0.9821
+site_var         0.2687    0.0151  17.7999  0.0000  0.2391  0.2983
+=================================================================
+```
+
+The results of this model indicate that playing at home has a statistically significant (p < 0.0001) positive effect on the probability of winning. As expected, the coefficient on rating_diff is near 1, as we obtained this rating diff feature using logistic regression (in the logistic regression model, the rating diff has a one-to-one linear relationship with the log odds) It also makes sense that this coefficient is now slightly less than one given the influence of the site variable the correlation between the two features.
+
+Now, we can investigate the _ceterus paribus_ effect of playing at home on the probability of winning. We will do so by evaluating the rating_diff=0 and site_var = 1/-1.
+
+```python
+model.predict(model_fit.params, exog=[[0, -1], [0, 1]])
+```
+
+This evaluates to about [0.433, 0.567]. Thus, for teams of otherwise equal skill, the model predicts the home team will win about 56.7% of the time, while the away team will win about 43.3% of the time.
+
+As an additional analysis, I interacted the site variable with one-hot variables for the division of one team in each game. In doing so, I sought to find whether home-field advantage may differ by division. I built a regression with five features, the rating difference as before, then four binary variables corresponding to an indicator variable for the division (D1, D2, D3, Unknown) multiplied by the site_var from the previous regression. The following results demonstrate variation in the magnitude of home-field advantage across these four groups, with division 2 demonstrating the largest home-field advantage.
+
+```
+                         Results: Logit
+=================================================================
+Model:              Logit            Method:           MLE
+Dependent Variable: result_num       Pseudo R-squared: 0.396
+Date:               2025-05-28 21:24 AIC:              27123.2416
+No. Observations:   32393            BIC:              27165.1701
+Df Model:           4                Log-Likelihood:   -13557.
+Df Residuals:       32388            LL-Null:          -22453.
+Converged:          1.0000           LLR p-value:      0.0000
+No. Iterations:     7.0000           Scale:            1.0000
+------------------------------------------------------------------
+                 Coef.   Std.Err.     z     P>|z|   [0.025  0.975]
+------------------------------------------------------------------
+rating_diff      0.9615    0.0109  88.0321  0.0000  0.9401  0.9829
+dUnknown         0.5098    0.2543   2.0048  0.0450  0.0114  1.0081
+d1               0.2117    0.0321   6.5859  0.0000  0.1487  0.2747
+d2               0.3447    0.0383   8.9953  0.0000  0.2696  0.4198
+d3               0.2686    0.0191  14.0278  0.0000  0.2310  0.3061
+=================================================================
+```
+
+# Discussion
+
+I believe this analysis is a first step toward causal inference on the effect of playing at home. Our model isolates playing at home from our understanding of each team's skill, offering a more accurate estimate of home-field advantage.
+
+Nevertheless, I would not trust the results of this model at face value as I suspect it is misspecified. It is likely I omitted additional factors relevant to game outcome that are correlated with the included features. Further, I find it likely there are relevant interaction terms I did not include (e.g., the effect of playing at home may differ depending on the rating difference between the two opponents) that again may be correlated to the included features.
+
+At the very least, this work demonstrates that the location of a college lacrosse game is likely a meaningful and important feature to include when building a win-prediction model.
+
+# Bibliography
+
+[^ref]

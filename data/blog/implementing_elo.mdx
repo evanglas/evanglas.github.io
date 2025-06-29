@@ -1,0 +1,91 @@
+---
+title: Implementing The Elo Model
+date: '2025-05-17'
+tags: ['stats', 'math']
+description: Applying the Elo model to college lacrosse data.
+bibliography: references-data.bib
+---
+
+In this post, I will outline my implementation of the Elo model on college lacrosse data. I will first discuss my model building process, highlighting any ways in which I deviated from the original Elo model. I will then discuss the models results, touching on the model's calibration speed, accuracy, and performance across NCAA divisions. I will conclude with a discussion of the model's limitations and potential future work.
+
+# Model building
+
+## The Data
+
+I started my work with a dataset of over 35,000 college lacrosse games from the 2011-2024 seasons[^1]. Division 3 games represent the majority of the data, followed by Division 1, 2, and a handfull of interdivisional games.
+
+![Games By Year](/blog/images/elo_implementation/games_by_year.png)
+![Games By Division](/blog/images/elo_implementation/games_by_division_pair.png)
+
+## The Model
+
+I implemented the logistic variety of the Elo model (see [here](/blog/elo_logistic)) given its ease of implementation compared to an Elo model using normal distributions (the results would have likely been similar either way). Under this model, the win probability for team A against team B is given by
+
+$$
+P(A) = \frac{1}{1 + 10^{(r_B - r_A)/s}}
+$$
+
+where $r_A$ and $r_B$ are the Elo ratings of teams A and B, respectively. This model assumes that a difference in ratings of $s$ corresponds to a 10:1 odds ratio. In my implementation, I chose to set $s = 400$ by convention.
+
+This model uses the following rating-update formula:
+
+$$
+r_A' = r_A + K \cdot (W - P(A))
+$$
+
+where $r_A'$ is the new rating for team A, $K$ is a constant that determines the sensitivity of the ratings to new information, and $W$ is the actual outcome of the game (1 for a win, 0.5 for a tie, and 0 for a loss).
+
+I chose $K = 100$ to balance the model's stability and speed of convergence. I found that the conventional value of $K = 32$ led to a model that failed to converge within the span of my dataset. A standard college team's schedule comprises about 20 games per season, giving the model few opportunities to adjust over the course of a season. As shown below, a parameter choice of $K = 32$ is even too small to allow ratings to converge over a _decade_ when each team starts with an equal rating. If I sought to optimize this model, I would likely pick a value of $K$ via a more formal hyperparameter search.
+
+![Division 1 Elo Ratings Over Time by K Value](/blog/images/elo_implementation/k_parameter_comparison.png)
+
+A made a couple non-trivial modeling decision that departed from a baseline Elo model.
+
+1. **Exclusion of Interdivisional Games**: The vast majority of college lacrosse games involve teams from the same division, effectively dividing all teams into three isolated groups. The Elo model has few opportunities to evaluate the strength of teams across divisions, leading to three sets of essentially independent sets of ratings. For example, the highest Elo rating across the entire model output belongs to a team in Division 3, despite the fact that this team was unlikely to be the best team in the country across all three divisions. Given the scarcity of interdivisional games in the data, I found that when they did occur, they mainly just added noise to three otherwise valid sets of ratings. For instance, if an average Division 1 team faced an average Division 3 team, the model would likely fail to view the Division 1 team as a heavy favorite, leading to excessively large rating updates for both teams. As such, I chose to abandon the possibility of a unified rating system for all three divisions and excluded interdivisional games from the model.
+
+2. **Change of Division**: I chose to identify teams via a dual key of their school and division. This way, if a team changed divisions, their old Elo rating would not carry over to the new division. For instance, if a strong Division 3 team switched to Division 1, their rating would likely fall precipitously (while falsely bumping up opponent ratings) until the Division 3 team's rating becomes calibrated to the new level of competition. In my implementation, I start all team on equal footing within each division.
+
+## Results
+
+I will exclude games from before 2016 as the model required several years to "warm up". The below results should be indicative of how a calibrated model would perform.
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  ![Accuracy By Division](/blog/images/elo_implementation/accuracy_by_division.png)
+</div>
+
+The model was most accurate for Division 3 and least accurate for Division 1. This is likely attributable to a greater degree of parity within Division 1. The model supports this hypothesis given the variance of team ratings by division at the end of the sample. Division 3 teams demostrate the greatest standard deviation of team rating by far, followed by Division 2 then Division 1. This matches the order of model accuracy by division.
+
+![Final Team Rating Standard Deviations by Division](/blog/images/elo_implementation/final_team_rating_stds.png)
+
+The model performs well across all predicted win probality ranges. As demonstrated by the below calibration plot, the model's predictied win probabilities tend to align with the true win probabilities.
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  ![Model Calibration Plot](/blog/images/elo_implementation/calibration_curve.png)
+</div>
+
+The model achieved an AUC score of about 0.88 on post-2015 data. The below plot offers a sense of the model's sensitivity and specificity at different prediction score thresholds.
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  ![ROC Curve Plot](/blog/images/elo_implementation/roc_curve.png)
+</div>
+
+# Limitations and future work
+
+The Elo model, with little modification, has strong predictive power on lacrosse data. However, the model fails to account for numerous factors that likely influence game outcomes. The Elo model only considers a team's performance in terms of win/loss/tie in the context of their opponent's Elo score. It is possible the Elo model could then be used as a feature of another model that incorporates factors beyond the Elo model's scope. I feel the following factors comprise some of the "low-hanging fruit" ignored by the Elo model that would likely offer additional predictive power:
+
+1. Home field advantage
+2. Game win/loss margin
+3. Offensive/defensive efficiency
+4. Subjective ranking polls
+
+I believe their exists substantial progress to be made even within the broader framework of the Elo model. In my next post, I will address some of the following possibilities:
+
+1. **Season-to-season mean reversion**: As it stands, this model assumes team ratings do not change between seasons. While historical performance is a predictor of future performance (strong teams often belong to strong _programs_ with consistent performance), I would suspect some level of reversion to mean as teams reshuffle between seasons. I suspect this would hold especially true for the very best teams in any given year, as exceptional performance is unlikely to persist for very long. It would be easy to test this reversion-to-mean hypothesis by applying a ratings bump to the mean between seasons across all teams in the data.
+
+2. **Information sharing across games**: The base Elo model only adjusts ratings for a given team when that team sees action on the field. As described towards the end of this post, the logistic regression framework offers a way to update _all_ team ratinsg after each game. If we have a better understanding of the true rating of a given Team A's historical opponents, it would make sense for us to update Team A's rating accordingly when that information becomes available.
+
+3. **Dynamic Update Step Size**: It is reasonable to assume we become more certain in team ratings as the season progresses. Teams undergo substantial change in the offseason, yet without official competitions, we have no way of acquiring recent data. We thus begin the season highly uncertain where teams stand. A large $K$ value would make sense in this context as it would allow the model to calibrate itself more quickly to a reasonable rating. We may decrease the value of $K$ as we acquire more data. In doing so, we may achieve a model that is faster to converge, yet more stable in the long run.
+
+I will conclude this post with an intersting finding. Across the entire sample, Salisbury University achieved the greatest Elo rating of about 2507 on May 12, 2024. VTSU-Johnson achieved the lowest Elo rating of about -181 on April 4, 2019. This model would predict VTSU-Johnson to have about a 1 in 1000 odds of winning in a hypothetical game between these two teams.
+
+[^1]: The was not an exhaustive dataset of all games during this period. I exluded several hundred games due to missing data (e.g., missing scores, team identifying information).

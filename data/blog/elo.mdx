@@ -3,6 +3,7 @@ title: The Elo Model
 date: '2025-05-04'
 tags: ['stats', 'math']
 description: An overview of the theory behind the Elo rating system.
+bibliography: references-data.bib
 ---
 
 This post will be the first in a series describing common rating systems in theory and practice. I first gained interest in the topic of rating systems as a means to predict the outcome of lacrosse games. I had initially planned to write this post mainly in the context of lacrosse data. As I delved deeper into the nuances of various rating systems, I found the theory underpinning such systems merited separate posts.
@@ -44,7 +45,7 @@ To answer whether $r'_i$ should be higher or lower than $r_i$, and by how much, 
 
 Since $P_i$ and $P_j$ both follow normal distributions, we know $P_i - P_j \sim N(r_i - r_j, \sqrt{\sigma^2+\sigma^2})=N(r_i-r_j,\sigma \sqrt{2})$. We will define a new random variable to be this difference in performance scores, $D_{ij}=P_i-P_j$. Define $F_{D_{ij}}$ to be the cumulative distribution function of $D_{ij}$. Now, the probability player $i$ wins is $\mathbb{P}(D_{ij}<0)=1-F_{D_{ij}}(0)$. We will define this quantity as the expected score of player $i$, $S^E_i$. In our discussion below, we will discuss $S^E_i$ under the assumption player $i$'s opponents have average rating $r_C$.
 
-![Distributions](/static/images/elo/player_elos.png)
+![Distributions](/blog/images/elo/player_elos.png)
 
 In $N$ games where the average opponent has rating $r_C$, we expect player $i$ to win $N*S^E_i$ games[^2]. Player $i$'s expected win percentage is $S^E_i$. Finally, to adjust player $i$'s rating, we must determine the "most likely" rating of player $i$ given their expected score and realized score.
 
